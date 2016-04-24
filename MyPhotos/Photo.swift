@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Photo {
+class Photo : Equatable {
     // MARK - Properties
     
     var title: String?
@@ -19,7 +19,6 @@ class Photo {
             return NSData(contentsOfURL: url)
         }
     }
-    
     // initialisation
     
     init(title: String? = nil, url: NSURL, tags: [String]? = nil) {
@@ -28,4 +27,10 @@ class Photo {
         self.tags = tags
     }
     
+    func ==(_ lhs: Self, _ rhs: Self) -> Bool {
+    
+        return lhs.title == rhs.title && lhs.url == rhs.url && lhs.tags == rhs.tags && lhs.imageData == rhs.imageData
+    }
+    
 }
+

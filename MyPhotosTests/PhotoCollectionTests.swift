@@ -7,8 +7,13 @@
 //
 
 import XCTest
+@testable import MyPhotos
 
 class PhotoCollectionTests: XCTestCase {
+    
+    class PhotoCollection {
+        var photoCollection: [Photo] = []
+    }
     
     
 
@@ -21,6 +26,12 @@ class PhotoCollectionTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
     }
-
+    
+    func testPhotoCollection() {
+        let photoCollectionToTest = [Photo(title: "Photo1", url: NSURL(string: "http://stuffpoint.com/cartoons/image/95692-cartoons-cartoon.jpg")!, tags: ["dasdsd", "adsadsdsa", "adsadss"]), Photo(title: "Photo2", url: NSURL(string: "http://stuffpoint.com/cartoons/image/187936-cartoons-pluto.jpg")!, tags: ["dasdsd", "adsadsdsa", "adsadss"]), Photo(url: NSURL(string: "http://stuffpoint.com/cartoons/image/174883-cartoons-cartoons.jpg")!, tags: ["dasdsd", "adsadsdsa", "adsadss"])]
+        let photoColletion = PhotoCollection()
+        photoColletion.photoCollection = photoCollectionToTest
+        XCTAssertEqual(photoColletion.photoCollection, photoCollectionToTest)
+    }
 
 }
