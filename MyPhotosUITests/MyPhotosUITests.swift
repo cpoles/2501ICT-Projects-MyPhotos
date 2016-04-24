@@ -33,4 +33,28 @@ class MyPhotosUITests: XCTestCase {
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
     
+    func wait(delay: NSTimeInterval = 2) {
+        let runLoop = NSRunLoop.mainRunLoop()
+        let someTimeInTheFuture = NSDate(timeIntervalSinceNow: delay)
+        runLoop.runUntilDate(someTimeInTheFuture)
+    }
+    
+    
+    func waitNumberOfTries(value: XCUIElement, _ t: NSTimeInterval = 3) {
+        let exists = NSPredicate(format:  "exists == true")
+        let expectation = expectationForPredicate(exists, evaluatedWithObject: value, handler: nil)
+        waitForExpectationsWithTimeout(t, handler: nil)
+        print(expectation)
+    }
+
+    
+    func testChangeToDetailViewAddButton() {
+        
+        
+        let app = XCUIApplication()
+        app.navigationBars["MyPhotos.MasterView"].buttons["Add"].tap()
+        app.navigationBars["MyPhotos.DetailView"].childrenMatchingType(.Button).matchingIdentifier("Back").elementBoundByIndex(0).tap()
+        
+    }
+    
 }

@@ -42,7 +42,7 @@
                                 </constraints>
                                 <connections>
                                     <outlet property="imageCell" destination="tXd-hZ-478" id="jsK-ar-4FI"/>
-                                    <segue destination="iiA-09-OIO" kind="presentation" id="Okb-82-2vS"/>
+                                    <segue destination="iiA-09-OIO" kind="show" identifier="showDetail" id="Okb-82-2vS"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -54,14 +54,14 @@
                     <navigationItem key="navigationItem" id="9Zx-bW-gp3">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="DWm-fQ-GBd">
                             <connections>
-                                <segue destination="iiA-09-OIO" kind="presentation" id="m7k-1o-oIT"/>
+                                <segue destination="iiA-09-OIO" kind="show" identifier="addPhoto" id="m7k-1o-oIT"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ont-oQ-DhZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1307" y="393"/>
+            <point key="canvasLocation" x="1521" y="303"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="MA9-H6-lRM">
@@ -166,7 +166,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="alL-Ml-aRc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2965" y="393"/>
+            <point key="canvasLocation" x="2787" y="339"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="U65-n2-90h">
@@ -184,7 +184,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gcP-a1-OkY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="495" y="393"/>
+            <point key="canvasLocation" x="638" y="321"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="P8k-P3-JOg">
@@ -202,10 +202,10 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7KQ-xA-Jnh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2153" y="393"/>
+            <point key="canvasLocation" x="2046" y="960"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="m7k-1o-oIT"/>
+        <segue reference="Okb-82-2vS"/>
     </inferredMetricsTieBreakers>
 </document>
