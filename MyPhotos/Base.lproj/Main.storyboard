@@ -20,7 +20,7 @@
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="X3d-Pl-Oza">
-                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                <rect key="frame" x="0.0" y="64" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
@@ -34,8 +34,27 @@
                             <outlet property="delegate" destination="amQ-NV-TTo" id="U0y-hW-CrG"/>
                         </connections>
                     </collectionView>
+                    <navigationItem key="navigationItem" id="9Zx-bW-gp3"/>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ont-oQ-DhZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1307" y="393"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="U65-n2-90h">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="AhQ-fS-YdG" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ur1-fu-q5k">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="amQ-NV-TTo" kind="relationship" relationship="rootViewController" id="amy-W9-ctY"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gcP-a1-OkY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="495" y="393"/>
         </scene>
