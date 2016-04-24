@@ -29,5 +29,21 @@ class PhotoCollectionTests: XCTestCase {
         photoColletion.photoCollection = photoCollectionToTest
         XCTAssertEqual(photoColletion.photoCollection, photoCollectionToTest)
     }
+    
+    // function for testing setters and getters 
+    
+    func testSettersAndGetters() {
+        let photoColletions = [[Photo(title: "Photo1", url: NSURL(string: "http://stuffpoint.com/cartoons/image/95692-cartoons-cartoon.jpg")!, tags: ["dasdsd", "adsadsdsa", "adsadss"]), Photo(title: "Photo2", url: NSURL(string: "http://stuffpoint.com/cartoons/image/187936-cartoons-pluto.jpg")!, tags: ["dasdsd", "adsadsdsa", "adsadss"]), Photo(url: NSURL(string: "http://stuffpoint.com/cartoons/image/174883-cartoons-cartoons.jpg")!, tags: ["dasdsd", "adsadsdsa", "adsadss"])], [Photo(title: "Photo1", url: NSURL(string: "http://stuffpoint.com/cartoons/image/95692-cartoons-cartoon.jpg")!, tags: ["dasdsd", "adsadsdsa", "adsadss"]), Photo(title: "Photo2", url: NSURL(string: "http://stuffpoint.com/cartoons/image/187936-cartoons-pluto.jpg")!, tags: ["dasdsd", "adsadsdsa", "adsadss"]), Photo(url: NSURL(string: "http://stuffpoint.com/cartoons/image/174883-cartoons-cartoons.jpg")!, tags: ["dasdsd", "adsadsdsa", "adsadss"])], [Photo(title: "Photo1", url: NSURL(string: "http://stuffpoint.com/cartoons/image/95692-cartoons-cartoon.jpg")!, tags: ["dasdsd", "adsadsdsa", "adsadss"]), Photo(title: "Photo2", url: NSURL(string: "http://stuffpoint.com/cartoons/image/187936-cartoons-pluto.jpg")!, tags: ["dasdsd", "adsadsdsa", "adsadss"]), Photo(url: NSURL(string: "http://stuffpoint.com/cartoons/image/174883-cartoons-cartoons.jpg")!, tags: ["dasdsd", "adsadsdsa", "adsadss"])], [Photo(title: "Photo1", url: NSURL(string: "http://stuffpoint.com/cartoons/image/95692-cartoons-cartoon.jpg")!, tags: ["dasdsd", "adsadsdsa", "adsadss"]), Photo(title: "Photo2", url: NSURL(string: "http://stuffpoint.com/cartoons/image/187936-cartoons-pluto.jpg")!, tags: ["dasdsd", "adsadsdsa", "adsadss"]), Photo(url: NSURL(string: "http://stuffpoint.com/cartoons/image/174883-cartoons-cartoons.jpg")!, tags: ["dasdsd", "adsadsdsa", "adsadss"])]]
+        
+        let photos = PhotoCollection()
+        
+        for collection in photoColletions {
+            photos.photoCollection = collection
+            
+            XCTAssertEqual(photos.photoCollection, collection)
+            
+        }
+        
+    }
 
 }
