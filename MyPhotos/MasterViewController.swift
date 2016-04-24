@@ -34,6 +34,22 @@ class MasterViewController: UICollectionViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    // MARK: - Collection View
+    
+    override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return self.photoColletion.count
+    }
+    
+    override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        // create cell as CollectionViewCell object
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("collectionCell", forIndexPath: indexPath) as! CollectionViewCell
+        if let picture =  photoColletion[indexPath.row].imageData {
+            cell.imageCell.image = UIImage(data: picture)
+        }
+        return cell
+    }
+    
+    
     
     
     // MARK: - Methods
@@ -47,10 +63,10 @@ class MasterViewController: UICollectionViewController {
                 // the UIView objects MUST run in the main thread. 
                 let mainQueue = dispatch_get_main_queue()
                 // dispatch items assincronously.
-                dispatch_async(mainQueue, {
+                dispatch_async(mainQueue) {
                     photo.imageData = data
                     self.collectionView?.reloadData()
-                })
+                }
             } else {
                 print("Could not download page \(photo.url)")
             }
