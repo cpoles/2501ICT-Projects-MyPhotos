@@ -21,6 +21,12 @@ class DetailViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var imagePhoto: UIImageView!
     
+    var detailItem: AnyObject? {
+        didSet {
+            
+        }
+    }
+    
     
 
     override func viewDidLoad() {

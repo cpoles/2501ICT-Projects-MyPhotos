@@ -49,7 +49,16 @@ class MasterViewController: UICollectionViewController {
         return cell
     }
     
+    // MARK: - Segues
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "showDetail" {
+            let destinationViewController = segue.destinationViewController as! DetailViewController
+            let indexPaths = self.collectionView?.indexPathsForSelectedItems()
+            let indexPath = indexPaths![0] as NSIndexPath
+            destinationViewController.detailItem = photoColletion[indexPath.row]
+        }
+    }
     
     
     // MARK: - Methods
