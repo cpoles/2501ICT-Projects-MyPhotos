@@ -16,7 +16,11 @@ class PhotoTests: XCTestCase {
         var title: String?
         var url: NSURL
         var tags: [String]?
-        var imageData: NSData?
+        var imageData: NSData? {
+            get {
+                return NSData(contentsOfURL: url)
+            }
+        }
         
         // initialisation
         
@@ -57,6 +61,14 @@ class PhotoTests: XCTestCase {
         
     }
     
+    // test tags property
+    
+    func testTags() {
+        let tagsToTest = ["bri", "bsjeu", "jeijdl", "lekjd"]
+        let photo = Photo(title: "Photo Title", url: NSURL(string: "http://someweb.com")!, tags: tagsToTest)
+        XCTAssertNotNil(tagsToTest)
+        XCTAssertEqual(photo.tags!, tagsToTest)
+    }
     
     
     
