@@ -25,8 +25,19 @@
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tXd-hZ-478">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        </imageView>
+                                    </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
+                                <constraints>
+                                    <constraint firstItem="tXd-hZ-478" firstAttribute="top" secondItem="X3d-Pl-Oza" secondAttribute="top" id="0QV-0F-xuY"/>
+                                    <constraint firstAttribute="trailing" secondItem="tXd-hZ-478" secondAttribute="trailing" id="RV6-rf-FMo"/>
+                                    <constraint firstAttribute="bottom" secondItem="tXd-hZ-478" secondAttribute="bottom" id="gtX-lV-fkC"/>
+                                    <constraint firstItem="tXd-hZ-478" firstAttribute="leading" secondItem="X3d-Pl-Oza" secondAttribute="leading" id="mPJ-Sn-5wH"/>
+                                </constraints>
                             </collectionViewCell>
                         </cells>
                         <connections>
