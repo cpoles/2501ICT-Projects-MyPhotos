@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MasterViewController: UIViewController {
+class MasterViewController: UICollectionViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
