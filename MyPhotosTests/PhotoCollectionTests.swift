@@ -37,6 +37,8 @@ class PhotoCollectionTests: XCTestCase {
         
         let photos = PhotoCollection()
         
+        // test each element of the photoCollection array.
+        
         for collection in photoColletions {
             photos.photoCollection = collection
             
