@@ -54,7 +54,7 @@
                     <navigationItem key="navigationItem" id="9Zx-bW-gp3">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="DWm-fQ-GBd">
                             <connections>
-                                <segue destination="iiA-09-OIO" kind="show" identifier="addPhoto" id="m7k-1o-oIT"/>
+                                <segue destination="iiA-09-OIO" kind="presentation" identifier="addPhoto" id="m7k-1o-oIT"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -206,6 +206,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Okb-82-2vS"/>
+        <segue reference="m7k-1o-oIT"/>
     </inferredMetricsTieBreakers>
 </document>

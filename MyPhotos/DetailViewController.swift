@@ -8,7 +8,9 @@
 
 import UIKit
 
-class DetailViewController: UIViewController {
+class DetailViewController: UIViewController, UITextFieldDelegate {
+    
+    // MARK: - Properties
     
     
     @IBOutlet weak var textTitle: UITextField!
@@ -19,17 +21,37 @@ class DetailViewController: UIViewController {
     
     @IBOutlet weak var imagePhoto: UIImageView!
     
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        //set this detail view as the delegate for the text fields.
+        
+        textTitle.delegate = self
+        textTags.delegate = self
+        textUrl.delegate = self
+        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    // MARK: UITextFieldDelegate
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        // Hide the keyboard.
+        
+        textTitle.resignFirstResponder()
+        textTags.resignFirstResponder()
+        textUrl.resignFirstResponder()
+        return true
+    }
+    
+    
+    
     
 
     /*
