@@ -9,6 +9,16 @@
 import UIKit
 
 class DetailViewController: UIViewController {
+    
+    
+    @IBOutlet weak var textTitle: UITextField!
+    
+    @IBOutlet weak var textTags: UITextField!
+    
+    @IBOutlet weak var textUrl: UITextField!
+    
+    @IBOutlet weak var imagePhoto: UIImageView!
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
