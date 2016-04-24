@@ -10,7 +10,23 @@ import XCTest
 
 class PhotoTests: XCTestCase {
     
-    
+    class Photo {
+        // MARK - Properties
+        
+        var title: String?
+        var url: NSURL
+        var tags: [String]?
+        var imageData: NSData?
+        
+        // initialisation
+        
+        init(title: String? = nil, url: NSURL, tags: [String]? = nil) {
+            self.title = title
+            self.url = url
+            self.tags = tags
+        }
+        
+    }
     
     
     
