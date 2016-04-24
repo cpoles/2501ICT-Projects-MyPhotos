@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		774EEACC1CCCEE82007721D8 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774EEACB1CCCEE82007721D8 /* CollectionViewCell.swift */; };
 		777F184C1CCC699F0092C5B2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 777F184B1CCC699F0092C5B2 /* AppDelegate.swift */; };
 		777F184E1CCC699F0092C5B2 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 777F184D1CCC699F0092C5B2 /* MasterViewController.swift */; };
 		777F18511CCC699F0092C5B2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 777F184F1CCC699F0092C5B2 /* Main.storyboard */; };
@@ -38,6 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		774EEACB1CCCEE82007721D8 /* CollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		777F18481CCC699F0092C5B2 /* MyPhotos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyPhotos.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		777F184B1CCC699F0092C5B2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		777F184D1CCC699F0092C5B2 /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
@@ -108,6 +110,7 @@
 				777F187B1CCC7B240092C5B2 /* Photo.swift */,
 				777F187F1CCC8C090092C5B2 /* PhotoCollection.swift */,
 				777F184D1CCC699F0092C5B2 /* MasterViewController.swift */,
+				774EEACB1CCCEE82007721D8 /* CollectionViewCell.swift */,
 				777F184F1CCC699F0092C5B2 /* Main.storyboard */,
 				777F18521CCC699F0092C5B2 /* Assets.xcassets */,
 				777F18541CCC699F0092C5B2 /* LaunchScreen.storyboard */,
@@ -268,6 +271,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				774EEACC1CCCEE82007721D8 /* CollectionViewCell.swift in Sources */,
 				777F187C1CCC7B240092C5B2 /* Photo.swift in Sources */,
 				777F184E1CCC699F0092C5B2 /* MasterViewController.swift in Sources */,
 				777F18801CCC8C090092C5B2 /* PhotoCollection.swift in Sources */,
