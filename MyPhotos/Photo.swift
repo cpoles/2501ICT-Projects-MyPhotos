@@ -30,6 +30,8 @@ class Photo : Equatable {
   
 }
 
+// MARK: - Equatable
+
 func ==(lhs: Photo, rhs: Photo) -> Bool {
     
     return lhs.title! == rhs.title! && lhs.url == rhs.url && lhs.tags! == rhs.tags! && lhs.imageData! == rhs.imageData!

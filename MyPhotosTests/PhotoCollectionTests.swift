@@ -11,12 +11,6 @@ import XCTest
 
 class PhotoCollectionTests: XCTestCase {
     
-    class PhotoCollection {
-        var photoCollection: [Photo] = []
-    }
-    
-    
-
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -26,6 +20,8 @@ class PhotoCollectionTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
     }
+    
+    // function to test the photoCollection property.
     
     func testPhotoCollection() {
         let photoCollectionToTest = [Photo(title: "Photo1", url: NSURL(string: "http://stuffpoint.com/cartoons/image/95692-cartoons-cartoon.jpg")!, tags: ["dasdsd", "adsadsdsa", "adsadss"]), Photo(title: "Photo2", url: NSURL(string: "http://stuffpoint.com/cartoons/image/187936-cartoons-pluto.jpg")!, tags: ["dasdsd", "adsadsdsa", "adsadss"]), Photo(url: NSURL(string: "http://stuffpoint.com/cartoons/image/174883-cartoons-cartoons.jpg")!, tags: ["dasdsd", "adsadsdsa", "adsadss"])]

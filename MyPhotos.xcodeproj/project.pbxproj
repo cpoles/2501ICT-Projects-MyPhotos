@@ -17,6 +17,7 @@
 		777F187A1CCC69CD0092C5B2 /* PhotoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 777F18791CCC69CD0092C5B2 /* PhotoTests.swift */; };
 		777F187C1CCC7B240092C5B2 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 777F187B1CCC7B240092C5B2 /* Photo.swift */; };
 		777F187E1CCC82320092C5B2 /* PhotoCollectionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 777F187D1CCC82320092C5B2 /* PhotoCollectionTests.swift */; };
+		777F18801CCC8C090092C5B2 /* PhotoCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 777F187F1CCC8C090092C5B2 /* PhotoCollection.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		777F18791CCC69CD0092C5B2 /* PhotoTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoTests.swift; sourceTree = "<group>"; };
 		777F187B1CCC7B240092C5B2 /* Photo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		777F187D1CCC82320092C5B2 /* PhotoCollectionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCollectionTests.swift; sourceTree = "<group>"; };
+		777F187F1CCC8C090092C5B2 /* PhotoCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCollection.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +112,7 @@
 				777F18541CCC699F0092C5B2 /* LaunchScreen.storyboard */,
 				777F18571CCC699F0092C5B2 /* Info.plist */,
 				777F184B1CCC699F0092C5B2 /* AppDelegate.swift */,
+				777F187F1CCC8C090092C5B2 /* PhotoCollection.swift */,
 			);
 			path = MyPhotos;
 			sourceTree = "<group>";
@@ -267,6 +270,7 @@
 			files = (
 				777F187C1CCC7B240092C5B2 /* Photo.swift in Sources */,
 				777F184E1CCC699F0092C5B2 /* ViewController.swift in Sources */,
+				777F18801CCC8C090092C5B2 /* PhotoCollection.swift in Sources */,
 				777F184C1CCC699F0092C5B2 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
