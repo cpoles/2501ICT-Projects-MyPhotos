@@ -9,6 +9,8 @@
 import UIKit
 
 class MasterViewController: UICollectionViewController {
+    
+    var photos = PhotoCollection()
 
     override func viewDidLoad() {
         super.viewDidLoad()
