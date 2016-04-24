@@ -50,10 +50,20 @@ class MyPhotosUITests: XCTestCase {
     
     func testChangeToDetailViewAddButton() {
         
-        
         let app = XCUIApplication()
-        app.navigationBars["MyPhotos.MasterView"].buttons["Add"].tap()
-        app.navigationBars["MyPhotos.DetailView"].childrenMatchingType(.Button).matchingIdentifier("Back").elementBoundByIndex(0).tap()
+        wait()
+        let addButton = app.navigationBars["MyPhotos.MasterView"].buttons["Add"]
+        let backButton = app.navigationBars["MyPhotos.DetailView"].childrenMatchingType(.Button).matchingIdentifier("Back").elementBoundByIndex(0)
+        
+        while !addButton.exists {
+            wait()
+        }
+        addButton.tap()
+        
+        while !backButton.exists {
+            wait()
+        }
+        backButton.tap()
         
     }
     
