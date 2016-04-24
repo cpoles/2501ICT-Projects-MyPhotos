@@ -28,8 +28,6 @@ class PhotoTests: XCTestCase {
         
     }
     
-    
-    
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -39,17 +37,27 @@ class PhotoTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
     }
+   
+    //MARK: - Photo Class Tests 
     
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    // Test photo title property
+    
+    func testTitle() {
+        let titleToTest = "Photo Title"
+        let photo = Photo(title: titleToTest, url: NSURL(string: "http://someweb.com")!, tags: ["bri", "bsjeu", "jeijdl", "lekjd"])
+        XCTAssertNotNil(titleToTest)
+        XCTAssertEqual(photo.title, titleToTest)
+    }
+    // test photo url property
+    
+    func testUrl() {
+        let urlToTest = NSURL(string:"http://someurltotest.com")
+        let photo = Photo(title: "Photo Title", url: urlToTest!, tags: ["bri", "bsjeu", "jeijdl", "lekjd"])
+        XCTAssertEqual(photo.url, urlToTest)
+        
     }
     
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measureBlock {
-            // Put the code you want to measure the time of here.
-        }
-    }
+    
+    
     
 }
