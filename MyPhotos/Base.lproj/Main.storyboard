@@ -42,6 +42,7 @@
                                 </constraints>
                                 <connections>
                                     <outlet property="imageCell" destination="tXd-hZ-478" id="jsK-ar-4FI"/>
+                                    <segue destination="iiA-09-OIO" kind="presentation" id="Okb-82-2vS"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -51,7 +52,11 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" id="9Zx-bW-gp3">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="DWm-fQ-GBd"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="DWm-fQ-GBd">
+                            <connections>
+                                <segue destination="iiA-09-OIO" kind="presentation" id="m7k-1o-oIT"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ont-oQ-DhZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -200,4 +205,7 @@
             <point key="canvasLocation" x="2153" y="393"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="m7k-1o-oIT"/>
+    </inferredMetricsTieBreakers>
 </document>
