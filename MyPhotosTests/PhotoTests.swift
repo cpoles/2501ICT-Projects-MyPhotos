@@ -55,9 +55,16 @@ class PhotoTests: XCTestCase {
     
     func testImageData() {
         let photo = Photo(title: "Photo Title", url: NSURL(string: "http://stuffpoint.com/cartoons/image/95692-cartoons-cartoon.jpg")!, tags: ["bri", "bsjeu", "jeijdl", "lekjd"])
-        let imageDataToTest = photo.imageData
+        let imageDataToTest = NSData(contentsOfURL: photo.url)
         XCTAssertNotNil(imageDataToTest)
+        photo.imageData = imageDataToTest
         XCTAssertEqual(photo.imageData, imageDataToTest)
+        
+        let photo2 = Photo(title: "Photo Title2", url: NSURL(string: "http://stuffpoint.com/cats/image/41633-cats-cute-cat.jpg")!, tags: ["bri", "bsjeu", "jeijdl", "lekjd"])
+        
+        photo2.imageData = photo.imageData
+        XCTAssertEqual(photo2.imageData, photo.imageData)
+        
     }
     
     func testSettersAndGetters() {

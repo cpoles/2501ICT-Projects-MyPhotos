@@ -14,11 +14,7 @@ class Photo : Equatable {
     var title: String?
     var url: NSURL
     var tags: [String]?
-    var imageData: NSData? {
-        get {
-            return NSData(contentsOfURL: url)
-        }
-    }
+    var imageData: NSData? 
     // initialisation
     
     init(title: String? = nil, url: NSURL, tags: [String]? = nil) {

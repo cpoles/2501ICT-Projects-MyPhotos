@@ -106,13 +106,13 @@
 			isa = PBXGroup;
 			children = (
 				777F187B1CCC7B240092C5B2 /* Photo.swift */,
+				777F187F1CCC8C090092C5B2 /* PhotoCollection.swift */,
 				777F184D1CCC699F0092C5B2 /* ViewController.swift */,
 				777F184F1CCC699F0092C5B2 /* Main.storyboard */,
 				777F18521CCC699F0092C5B2 /* Assets.xcassets */,
 				777F18541CCC699F0092C5B2 /* LaunchScreen.storyboard */,
 				777F18571CCC699F0092C5B2 /* Info.plist */,
 				777F184B1CCC699F0092C5B2 /* AppDelegate.swift */,
-				777F187F1CCC8C090092C5B2 /* PhotoCollection.swift */,
 			);
 			path = MyPhotos;
 			sourceTree = "<group>";
