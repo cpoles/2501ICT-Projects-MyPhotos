@@ -27,10 +27,10 @@ class Photo : Equatable {
         self.tags = tags
     }
     
-    func ==(_ lhs: Self, _ rhs: Self) -> Bool {
-    
-        return lhs.title == rhs.title && lhs.url == rhs.url && lhs.tags == rhs.tags && lhs.imageData == rhs.imageData
-    }
-    
+  
 }
 
+func ==<Photo: Equatable>(lhs: Photo, rhs: Photo) -> Bool {
+    
+    return lhs.title! == rhs.title! && lhs.url == rhs.url && lhs.tags! == rhs.tags! && lhs.imageData! == rhs.imageData!
+}
