@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MasterViewController: UICollectionViewController {
+class MasterViewController: UICollectionViewController, DetailViewControllerDelegate {
     
     // MARK: - Properties
     
@@ -83,6 +83,24 @@ class MasterViewController: UICollectionViewController {
         
         dispatch_async(queue, backgroundDownload)
     }
+    
+    // MARK: - UIDetailViewControllerDelegate
+    
+    func destinationViewControllerContentChanged(destinationViewController: DetailViewController) {
+        if let photo = destinationViewController.detailItem {
+            print("Got \(photo)")
+            dismissViewControllerAnimated(true, completion: nil)
+        }
+        self.collectionView?.reloadData()
+    }
+    
+    
+    
+    
+    
+    
+    
+    
 
-}
+} // end of MasterViewController Class
 
