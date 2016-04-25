@@ -104,10 +104,11 @@ class MasterViewController: UICollectionViewController, DetailViewControllerDele
         if let photo = destinationViewController.detailItem {
             print("Got \(photo)")
             dismissViewControllerAnimated(true, completion: nil)
+            loadPhotoInBackground(photo as! Photo)
         }
+        
         self.collectionView?.reloadData()
     }
-    
-    
+     
 } // end of MasterViewController Class
 
