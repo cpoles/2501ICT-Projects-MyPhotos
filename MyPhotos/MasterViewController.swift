@@ -57,6 +57,8 @@ class MasterViewController: UICollectionViewController, DetailViewControllerDele
             let indexPaths = self.collectionView?.indexPathsForSelectedItems()
             let indexPath = indexPaths![0] as NSIndexPath
             destinationViewController.detailItem = photoColletion[indexPath.row]
+            destinationViewController.delegate = self
+            print("Show Detail")
         }
     }
     
@@ -95,12 +97,5 @@ class MasterViewController: UICollectionViewController, DetailViewControllerDele
     }
     
     
-    
-    
-    
-    
-    
-    
-
 } // end of MasterViewController Class
 

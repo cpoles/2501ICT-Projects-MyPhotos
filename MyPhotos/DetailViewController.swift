@@ -27,7 +27,8 @@ class DetailViewController: UIViewController, UITextFieldDelegate {
     
     var detailItem: AnyObject? {
         didSet {
-            
+            self.configureview()
+            print("Detail Item was set.")
         }
     }
     
@@ -80,11 +81,6 @@ class DetailViewController: UIViewController, UITextFieldDelegate {
             
             // handling the tag property so it can be printed as string
             let tagString =  photo?.tags?.joinWithSeparator(",")
-            
-//            for tag in (photo!.tags)! {
-//              tagString += "\(tag)" + ", "
-//            
-//            }
             tags.text = tagString
             
             // handling the photo image data so it can be displayed as UIImage
@@ -96,9 +92,9 @@ class DetailViewController: UIViewController, UITextFieldDelegate {
         print("View Refreshed")
     }
     
-    
-    @IBAction func backButton(sender: UIBarButtonItem) {
-        // rebuilding the object before go back to MasterViewController
+    @IBAction func buttonBack(sender: UIBarButtonItem) {
+        
+        //rebuilding the object before go back to MasterViewController
         
         photo?.title = textTitle.text
         
@@ -114,13 +110,6 @@ class DetailViewController: UIViewController, UITextFieldDelegate {
         // send delegate a message saying that the content of the destViewController has changed.
         delegate?.destinationViewControllerContentChanged(self)
         print("back to the main view...")
-        
-        
-        
-        
-        
-        
     }
-    
-
+   
 }
