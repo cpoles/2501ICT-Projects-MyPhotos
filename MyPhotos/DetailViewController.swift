@@ -33,6 +33,8 @@ class DetailViewController: UIViewController, UITextFieldDelegate {
     
     var photo: Photo?
     
+    var delegate: DetailViewControllerDelegate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -77,12 +79,12 @@ class DetailViewController: UIViewController, UITextFieldDelegate {
             url.text = urlString.absoluteString
             
             // handling the tag property so it can be printed as string
-            var tagString = ""
+            let tagString =  photo?.tags?.joinWithSeparator(",")
             
-            for tag in (photo!.tags)! {
-              tagString += "\(tag)" + ", "
-            
-            }
+//            for tag in (photo!.tags)! {
+//              tagString += "\(tag)" + ", "
+//            
+//            }
             tags.text = tagString
             
             // handling the photo image data so it can be displayed as UIImage
@@ -96,6 +98,28 @@ class DetailViewController: UIViewController, UITextFieldDelegate {
     
     
     @IBAction func backButton(sender: UIBarButtonItem) {
+        // rebuilding the object before go back to MasterViewController
+        
+        photo?.title = textTitle.text
+        
+        // retrieve url from the text field and parse it as string of the NSRUL object
+        let urlString = textUrl.text
+        photo?.url = NSURL(string: urlString!)!
+        
+        // retrieve tags from the text field and convert it to an array
+        let tagsString = textTags.text
+        let tags = tagsString?.componentsSeparatedByString(",")
+        photo?.tags = tags
+        
+        // send delegate a message saying that the content of the destViewController has changed.
+        delegate?.destinationViewControllerContentChanged(self)
+        print("back to the main view...")
+        
+        
+        
+        
+        
+        
     }
     
 
