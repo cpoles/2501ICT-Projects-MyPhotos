@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol DetailViewControllerDelegate {
+    func destinationViewControllerContentChanged(destinationViewController: DetailViewController)
+}
+
 class DetailViewController: UIViewController, UITextFieldDelegate {
     
     // MARK: - Properties
