@@ -18,8 +18,8 @@ class MasterViewController: UICollectionViewController, DetailViewControllerDele
         super.viewDidLoad()
         
         // set the navigation bar background colour as black
-     //   self.navigationController?.navigationBar.barTintColor = UIColor.blackColor()
-        
+        self.navigationController?.navigationBar.barTintColor = UIColor.blackColor()
+        self.navigationController!.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.orangeColor()]
         // Append photos to the array.
         
         photoColletion.append(Photo(title: "QUT", url: NSURL(string: "https://upload.wikimedia.org/wikipedia/en/thumb/9/9a/Queensland_University_of_Technology_(logo).svg/1017px-Queensland_University_of_Technology_(logo).svg.png")!, tags: ["qut", "queensland", "university"]))
@@ -104,11 +104,12 @@ class MasterViewController: UICollectionViewController, DetailViewControllerDele
         if let photo = destinationViewController.detailItem {
             print("Got \(photo)")
             dismissViewControllerAnimated(true, completion: nil)
+            // reload the new picture in the background
             loadPhotoInBackground(photo as! Photo)
         }
-        
+        // refresh the collection view.
         self.collectionView?.reloadData()
     }
-     
+    
 } // end of MasterViewController Class
 
