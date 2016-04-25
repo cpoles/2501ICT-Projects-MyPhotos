@@ -85,8 +85,9 @@ class DetailViewController: UIViewController, UITextFieldDelegate {
             
             // handling the photo image data so it can be displayed as UIImage
             
-            let photoImage = NSData(contentsOfURL: (photo?.url)!)
-            image.image = UIImage(data: photoImage!)
+            if let photoImage = NSData(contentsOfURL: (photo?.url)!) {
+                image.image = UIImage(data: photoImage)
+            } 
             
         }
         print("View Refreshed")

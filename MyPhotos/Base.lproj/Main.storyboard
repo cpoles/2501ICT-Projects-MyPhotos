@@ -6,7 +6,7 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Master View Controller-->
+        <!--Photo Collection-->
         <scene sceneID="aqH-br-1dg">
             <objects>
                 <collectionViewController id="amQ-NV-TTo" customClass="MasterViewController" customModule="MyPhotos" customModuleProvider="target" sceneMemberID="viewController">
@@ -51,8 +51,9 @@
                             <outlet property="delegate" destination="amQ-NV-TTo" id="U0y-hW-CrG"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" id="9Zx-bW-gp3">
+                    <navigationItem key="navigationItem" title="Photo Collection" id="9Zx-bW-gp3">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="DWm-fQ-GBd">
+                            <color key="tintColor" red="0.43879850910000001" green="1" blue="0.080440818119999993" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <segue destination="iiA-09-OIO" kind="presentation" identifier="addPhoto" id="iyZ-Iq-VRG"/>
                             </connections>
@@ -128,10 +129,15 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SNG-lu-ecx">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
+                                <color key="barTintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <color key="textColor" red="0.43879850910000001" green="1" blue="0.080440818119999993" alpha="1" colorSpace="calibratedRGB"/>
+                                </textAttributes>
                                 <items>
-                                    <navigationItem title="Title" id="v0R-55-ZHE">
+                                    <navigationItem title="Detail View" id="v0R-55-ZHE">
                                         <barButtonItem key="leftBarButtonItem" title="Back" id="2U3-6r-RIW">
+                                            <color key="tintColor" red="0.43879850910000001" green="1" blue="0.080440818119999993" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>
                                                 <action selector="buttonBack:" destination="iiA-09-OIO" id="740-zI-95s"/>
                                             </connections>
@@ -140,6 +146,7 @@
                                 </items>
                             </navigationBar>
                         </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="9k4-54-OJ0" firstAttribute="leading" secondItem="Met-3y-M87" secondAttribute="leadingMargin" constant="141" id="2Lh-fg-5fo"/>
                             <constraint firstItem="I51-5N-TgM" firstAttribute="top" secondItem="9k4-54-OJ0" secondAttribute="bottom" constant="8" id="4sc-4N-J9a"/>
@@ -167,7 +174,7 @@
                             <constraint firstItem="hzs-GP-wD3" firstAttribute="top" secondItem="XNj-pL-plQ" secondAttribute="bottom" constant="69" id="sVq-Zt-aY0"/>
                             <constraint firstItem="VnK-Ug-RMV" firstAttribute="leading" secondItem="BRa-Ed-jXU" secondAttribute="leading" id="xm5-SX-X1d"/>
                             <constraint firstItem="SNG-lu-ecx" firstAttribute="centerX" secondItem="hzs-GP-wD3" secondAttribute="centerX" id="xrq-G2-RIR"/>
-                            <constraint firstItem="SNG-lu-ecx" firstAttribute="top" secondItem="Met-3y-M87" secondAttribute="top" id="yHN-TH-cQo"/>
+                            <constraint firstItem="SNG-lu-ecx" firstAttribute="top" secondItem="Met-3y-M87" secondAttribute="top" constant="20" id="yHN-TH-cQo"/>
                         </constraints>
                     </view>
                     <toolbarItems/>

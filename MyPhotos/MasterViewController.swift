@@ -17,6 +17,9 @@ class MasterViewController: UICollectionViewController, DetailViewControllerDele
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // set the navigation bar background colour as black
+     //   self.navigationController?.navigationBar.barTintColor = UIColor.blackColor()
+        
         // Append photos to the array.
         
         photoColletion.append(Photo(title: "QUT", url: NSURL(string: "https://upload.wikimedia.org/wikipedia/en/thumb/9/9a/Queensland_University_of_Technology_(logo).svg/1017px-Queensland_University_of_Technology_(logo).svg.png")!, tags: ["qut", "queensland", "university"]))
@@ -59,6 +62,15 @@ class MasterViewController: UICollectionViewController, DetailViewControllerDele
             destinationViewController.detailItem = photoColletion[indexPath.row]
             destinationViewController.delegate = self
             print("Show Detail")
+        } else if segue.identifier == "addPhoto" {
+            let photo = Photo(url: NSURL(string: "")!)
+            photo.imageData = nil
+            photoColletion.append(photo)
+            let controller = segue.destinationViewController as! DetailViewController
+            controller.detailItem = photo
+            controller.delegate = self
+            print("Add new contact")
+            
         }
     }
     
