@@ -27,8 +27,8 @@ class DetailViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
+    var photo: Photo?
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -38,6 +38,7 @@ class DetailViewController: UIViewController, UITextFieldDelegate {
         textTags.delegate = self
         textUrl.delegate = self
         
+        self.configureview()
     }
 
     override func didReceiveMemoryWarning() {
@@ -45,7 +46,7 @@ class DetailViewController: UIViewController, UITextFieldDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    // MARK: UITextFieldDelegate
+    // MARK: - UITextFieldDelegate
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         // Hide the keyboard.
@@ -56,18 +57,40 @@ class DetailViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     
+    // MARK: - Methods
     
-    
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func configureview() {
+        //set the object to be displayed as Photo object
+        photo = self.detailItem as? Photo
+        
+        if let title = self.textTitle, let tags = self.textTags, let url = self.textUrl,
+            let image = self.imagePhoto {
+            // load textBoxes with corresponding data
+            title.text = photo!.title
+            
+            // handling url data to be printable as scring
+            let urlString = photo!.url
+            url.text = urlString.absoluteString
+            
+            // handling the tag property so it can be printed as string
+            var tagString = ""
+            
+            for tag in (photo!.tags)! {
+              tagString += "\(tag)" + ", "
+            
+            }
+            tags.text = tagString
+            
+            // handling the photo image data so it can be displayed as UIImage
+            
+            let photoImage = NSData(contentsOfURL: (photo?.url)!)
+            image.image = UIImage(data: photoImage!)
+            
+        }
+        print("View Refreshed")
     }
-    */
+    
+    
+    
 
 }
