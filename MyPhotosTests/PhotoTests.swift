@@ -28,15 +28,15 @@ class PhotoTests: XCTestCase {
     
     func testTitle() {
         let titleToTest = "Photo Title"
-        let photo = Photo(title: titleToTest, url: NSURL(string: "http://someweb.com")!, tags: ["bri", "bsjeu", "jeijdl", "lekjd"])
+        let photo = Photo(title: titleToTest, url: "http://someweb.com", tags: ["bri", "bsjeu", "jeijdl", "lekjd"])
         XCTAssertNotNil(titleToTest)
         XCTAssertEqual(photo.title, titleToTest)
     }
     // test photo url property
     
     func testUrl() {
-        let urlToTest = NSURL(string:"http://someurltotest.com")
-        let photo = Photo(title: "Photo Title", url: urlToTest!, tags: ["bri", "bsjeu", "jeijdl", "lekjd"])
+        let urlToTest = "http://someurltotest.com"
+        let photo = Photo(title: "Photo Title", url: urlToTest, tags: ["bri", "bsjeu", "jeijdl", "lekjd"])
         XCTAssertEqual(photo.url, urlToTest)
         
     }
@@ -45,7 +45,7 @@ class PhotoTests: XCTestCase {
     
     func testTags() {
         let tagsToTest = ["bri", "bsjeu", "jeijdl", "lekjd"]
-        let photo = Photo(title: "Photo Title", url: NSURL(string: "http://someweb.com")!, tags: tagsToTest)
+        let photo = Photo(title: "Photo Title", url: "http://someweb.com", tags: tagsToTest)
         XCTAssertNotNil(tagsToTest)
         XCTAssertEqual(photo.tags!, tagsToTest)
     }
@@ -54,13 +54,13 @@ class PhotoTests: XCTestCase {
     // test imageData property
     
     func testImageData() {
-        let photo = Photo(title: "Photo Title", url: NSURL(string: "http://stuffpoint.com/cartoons/image/95692-cartoons-cartoon.jpg")!, tags: ["bri", "bsjeu", "jeijdl", "lekjd"])
+        let photo = Photo(title: "Photo Title", url: "http://stuffpoint.com/cartoons/image/95692-cartoons-cartoon.jpg", tags: ["bri", "bsjeu", "jeijdl", "lekjd"])
         let imageDataToTest = NSData(contentsOfURL: photo.url)
         XCTAssertNotNil(imageDataToTest)
         photo.imageData = imageDataToTest
         XCTAssertEqual(photo.imageData, imageDataToTest)
         
-        let photo2 = Photo(title: "Photo Title2", url: NSURL(string: "http://stuffpoint.com/cats/image/41633-cats-cute-cat.jpg")!, tags: ["bri", "bsjeu", "jeijdl", "lekjd"])
+        let photo2 = Photo(title: "Photo Title2", url:"http://stuffpoint.com/cats/image/41633-cats-cute-cat.jpg", tags: ["bri", "bsjeu", "jeijdl", "lekjd"])
         
         photo2.imageData = photo.imageData
         XCTAssertEqual(photo2.imageData, photo.imageData)
@@ -69,10 +69,10 @@ class PhotoTests: XCTestCase {
     
     func testSettersAndGetters() {
         let titles = ["Title1", "Title2", "Title3", "Title4"]
-        let urls = [ NSURL(string:"http://stuffpoint.com/cartoons/image/95692-cartoons-cartoon.jpg")!, NSURL(string: "http://stuffpoint.com/cartoons/image/187936-cartoons-pluto.jpg")!, NSURL(string: "http://stuffpoint.com/cartoons/image/174883-cartoons-cartoons.jpg")!, NSURL(string: "http://stuffpoint.com/cats/image/41633-cats-cute-cat.jpg")!]
+        let urls = [ "http://stuffpoint.com/cartoons/image/95692-cartoons-cartoon.jpg", "http://stuffpoint.com/cartoons/image/187936-cartoons-pluto.jpg", "http://stuffpoint.com/cartoons/image/174883-cartoons-cartoons.jpg", "http://stuffpoint.com/cats/image/41633-cats-cute-cat.jpg"]
         let tags = [["bri", "bsjeu", "jeijdl", "lekjd"], ["sdff", "sdfsf", "sdfsdf", "sdf"], ["sewr", "dghhg", "gdfg", "dgg"], ["bdfggri", "bsdgfgjeu", "jeidfggjdl", "lekwerrrjd"]]
         
-        let photo = Photo(title: "", url: NSURL(string: "")!, tags: [])
+        let photo = Photo(title: "", url: "", tags: [])
         
         for title in titles {
             photo.title = title

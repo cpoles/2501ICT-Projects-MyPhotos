@@ -75,9 +75,9 @@ class DetailViewController: UIViewController, UITextFieldDelegate {
             // load textBoxes with corresponding data
             title.text = photo!.title
             
-            // handling url data to be printable as scring
+            // handling url data to be printable as string
             let urlString = photo!.url
-            url.text = urlString.absoluteString
+            url.text = urlString
             
             // handling the tag property so it can be printed as string
             let tagString =  photo?.tags?.joinWithSeparator(",")
@@ -85,7 +85,7 @@ class DetailViewController: UIViewController, UITextFieldDelegate {
             
             // handling the photo image data so it can be displayed as UIImage
             
-            if let photoImage = NSData(contentsOfURL: (photo?.url)!) {
+            if let photoImage = NSData(contentsOfURL: NSURL(string: photo!.url)!) {
                 image.image = UIImage(data: photoImage)
             } 
             
@@ -101,7 +101,7 @@ class DetailViewController: UIViewController, UITextFieldDelegate {
         
         // retrieve url from the text field and parse it as string of the NSRUL object
         let urlString = textUrl.text
-        photo?.url = NSURL(string: urlString!)!
+        photo?.url = urlString!
         
         // retrieve tags from the text field and convert it to an array
         let tagsString = textTags.text

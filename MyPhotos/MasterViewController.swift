@@ -22,9 +22,9 @@ class MasterViewController: UICollectionViewController, DetailViewControllerDele
         self.navigationController!.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.orangeColor()]
         // Append photos to the array.
         
-        photoColletion.append(Photo(title: "QUT", url: NSURL(string: "https://upload.wikimedia.org/wikipedia/en/thumb/9/9a/Queensland_University_of_Technology_(logo).svg/1017px-Queensland_University_of_Technology_(logo).svg.png")!, tags: ["qut", "queensland", "university"]))
-        photoColletion.append(Photo(title: "Griffith University", url: NSURL(string: "https://upload.wikimedia.org/wikipedia/en/2/2a/Griffith_University_logo.png")!, tags: ["griffith", "queensland", "university"]))
-        photoColletion.append(Photo(title: "ACU", url: NSURL(string: "http://www.pccevents.com.au/wp-content/uploads/2011/03/logo-acu-small.jpg")!, tags: ["catholic", "queensland", "university"]))
+        photoColletion.append(Photo(title: "QUT", url: "https://upload.wikimedia.org/wikipedia/en/thumb/9/9a/Queensland_University_of_Technology_(logo).svg/1017px-Queensland_University_of_Technology_(logo).svg.png", tags: ["qut", "queensland", "university"]))
+        photoColletion.append(Photo(title: "Griffith University", url: "https://upload.wikimedia.org/wikipedia/en/2/2a/Griffith_University_logo.png", tags: ["griffith", "queensland", "university"]))
+        photoColletion.append(Photo(title: "ACU", url: "http://www.pccevents.com.au/wp-content/uploads/2011/03/logo-acu-small.jpg", tags: ["catholic", "queensland", "university"]))
         
         for photo in photoColletion {
             loadPhotoInBackground(photo)
@@ -63,7 +63,7 @@ class MasterViewController: UICollectionViewController, DetailViewControllerDele
             destinationViewController.delegate = self
             print("Show Detail")
         } else if segue.identifier == "addPhoto" {
-            let photo = Photo(url: NSURL(string: "")!)
+            let photo = Photo(url: "")
             photo.imageData = nil
             photoColletion.append(photo)
             let controller = segue.destinationViewController as! DetailViewController
@@ -82,7 +82,7 @@ class MasterViewController: UICollectionViewController, DetailViewControllerDele
         
         // closure to be run in the background on the secondary queue
         let backgroundDownload = {
-            if let data = NSData(contentsOfURL: photo.url) {
+            if let data = NSData(contentsOfURL: NSURL(string: photo.url)!) {
                 // the UIView objects MUST run in the main thread. 
                 let mainQueue = dispatch_get_main_queue()
                 // dispatch items assincronously.

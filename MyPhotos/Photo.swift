@@ -12,12 +12,12 @@ class Photo : Equatable {
     // MARK - Properties
     
     var title: String?
-    var url: NSURL
+    var url: String
     var tags: [String]?
     var imageData: NSData? 
     // initialisation
     
-    init(title: String? = nil, url: NSURL, tags: [String]? = nil) {
+    init(title: String? = nil, url: String, tags: [String]? = nil) {
         self.title = title
         self.url = url
         self.tags = tags
