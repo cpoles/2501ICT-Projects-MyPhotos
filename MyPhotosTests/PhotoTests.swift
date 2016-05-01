@@ -50,7 +50,6 @@ class PhotoTests: XCTestCase {
         XCTAssertEqual(photo.tags!, tagsToTest)
     }
     
-    
     // test imageData property
     
     func testImageData() {
@@ -90,5 +89,7 @@ class PhotoTests: XCTestCase {
             }
         }
     }
+    
+    
     
 }
