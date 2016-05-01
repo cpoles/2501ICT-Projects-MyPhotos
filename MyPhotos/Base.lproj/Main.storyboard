@@ -142,6 +142,12 @@
                                                 <action selector="buttonBack:" destination="iiA-09-OIO" id="740-zI-95s"/>
                                             </connections>
                                         </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="trash" id="1J8-rT-ygX">
+                                            <color key="tintColor" red="1" green="0.041046944600000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <connections>
+                                                <action selector="buttonDelete:" destination="iiA-09-OIO" id="2Mj-XK-IUO"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>

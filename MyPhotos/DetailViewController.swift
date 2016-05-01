@@ -99,7 +99,7 @@ class DetailViewController: UIViewController, UITextFieldDelegate {
         
         photo?.title = textTitle.text
         
-        // retrieve url from the text field and parse it as string of the NSRUL object
+        // retrieve url from the text field
         let urlString = textUrl.text
         photo?.url = urlString!
         
@@ -112,5 +112,13 @@ class DetailViewController: UIViewController, UITextFieldDelegate {
         delegate?.destinationViewControllerContentChanged(self)
         print("back to the main view...")
     }
+    
+    
+    @IBAction func buttonDelete(sender: UIBarButtonItem) {
+        
+        
+    }
+    
+    
    
 }
