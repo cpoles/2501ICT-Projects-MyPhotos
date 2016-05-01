@@ -22,9 +22,13 @@ class MasterViewController: UICollectionViewController, DetailViewControllerDele
         self.navigationController!.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.orangeColor()]
         // Append photos to the array.
         
-        photoCollection.append(Photo(title: "QUT", url: "https://upload.wikimedia.org/wikipedia/en/thumb/9/9a/Queensland_University_of_Technology_(logo).svg/1017px-Queensland_University_of_Technology_(logo).svg.png", tags: ["qut", "queensland", "university"]))
-        photoCollection.append(Photo(title: "Griffith University", url: "https://upload.wikimedia.org/wikipedia/en/2/2a/Griffith_University_logo.png", tags: ["griffith", "queensland", "university"]))
-        photoCollection.append(Photo(title: "ACU", url: "http://www.pccevents.com.au/wp-content/uploads/2011/03/logo-acu-small.jpg", tags: ["catholic", "queensland", "university"]))
+        // Load any saved photos, otherwise, load the sample photoCollection
+        
+        if let savedPhotoCollection = loadPhotoCollection() {
+                photoCollection += savedPhotoCollection
+        } else {
+            // Load the sample photos
+        }
         
         for photo in photoCollection {
             loadPhotoInBackground(photo)
@@ -107,18 +111,35 @@ class MasterViewController: UICollectionViewController, DetailViewControllerDele
         dispatch_async(queue, backgroundDownload)
     }
     
-    func loadPhotoCollection() {
+    func loadPhotoCollection() -> [Photo]? {
         
+        // build the photo collection for the jsonFile
+        let path = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true).first! as NSString
+        // creating path and looking for file.
         
+        let jsonFile = path.stringByAppendingPathComponent("photoCollection.json")
+        
+        // create NSData object
+        let jsonData = NSData(contentsOfFile: jsonFile)
+        
+        // create the array of dictionaries out of the jsonData NSData object
+        
+        let jsonArrayDic: [NSDictionary]
+        
+        try! jsonArrayDic = NSJSONSerialization.JSONObjectWithData(jsonData!, options: []) as! [NSDictionary]
+        
+        // create the array of Photo objects parsing a trailing closure to the map function of the jsonArrayDic
+        // The closure will build a Photo object for each dictionary inside the jsonArrayDic
+        
+        let loadedPhotoCollection = jsonArrayDic.map { Photo(propertyList: $0) }
+        
+        return loadedPhotoCollection
+
         
     }
     
     func savePhotoCollection() {
-        
-        // append default photos
-        photoCollection.append(Photo(title: "QUT", url: "https://upload.wikimedia.org/wikipedia/en/thumb/9/9a/Queensland_University_of_Technology_(logo).svg/1017px-Queensland_University_of_Technology_(logo).svg.png", tags: ["qut", "queensland", "university"]))
-        photoCollection.append(Photo(title: "Griffith University", url: "https://upload.wikimedia.org/wikipedia/en/2/2a/Griffith_University_logo.png", tags: ["griffith", "queensland", "university"]))
-        photoCollection.append(Photo(title: "ACU", url: "http://www.pccevents.com.au/wp-content/uploads/2011/03/logo-acu-small.jpg", tags: ["catholic", "queensland", "university"]))
+
         
         // create path from Directory for the class for the converted class into a property list to be saved.
         
@@ -141,6 +162,14 @@ class MasterViewController: UICollectionViewController, DetailViewControllerDele
        data.writeToFile(jsonFile, atomically: true)
 
         
+    }
+    
+    func loadSamplePhotos() {
+        
+        // append default photos
+        photoCollection.append(Photo(title: "QUT", url: "https://upload.wikimedia.org/wikipedia/en/thumb/9/9a/Queensland_University_of_Technology_(logo).svg/1017px-Queensland_University_of_Technology_(logo).svg.png", tags: ["qut", "queensland", "university"]))
+        photoCollection.append(Photo(title: "Griffith University", url: "https://upload.wikimedia.org/wikipedia/en/2/2a/Griffith_University_logo.png", tags: ["griffith", "queensland", "university"]))
+        photoCollection.append(Photo(title: "ACU", url: "http://www.pccevents.com.au/wp-content/uploads/2011/03/logo-acu-small.jpg", tags: ["catholic", "queensland", "university"]))
     }
     
     
