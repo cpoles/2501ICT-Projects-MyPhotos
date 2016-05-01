@@ -198,18 +198,21 @@ class MasterViewController: UICollectionViewController, DetailViewControllerDele
         self.collectionView?.reloadData()
     }
     
-    func deletePhoto() {
+    func deletePhoto(destinationViewController: DetailViewController) {
+        if let photo = destinationViewController.detailItem {
         
-        let indexPaths = self.collectionView?.indexPathsForSelectedItems()
-        let indexPath = indexPaths![0] as NSIndexPath
-        self.collectionView?.deleteItemsAtIndexPaths([indexPath])
-        // save the photo collection and write to the json file
-        savePhotoCollection()
-        loadPhotoCollection()
-        
-        dismissViewControllerAnimated(true, completion: nil)
-        // refresh the collection view.
-        self.collectionView?.reloadData()
+            let indexPaths = photo.indexPathsForSelectedItems()
+            let indexPath = indexPaths![0] as NSIndexPath
+            self.collectionView?.deleteItemsAtIndexPaths([indexPath])
+            print("item deleted.")
+            // save the photo collection and write to the json file
+            savePhotoCollection()
+            loadPhotoCollection()
+            
+            dismissViewControllerAnimated(true, completion: nil)
+            // refresh the collection view.
+            self.collectionView?.reloadData()
+        }
         
     }
 
