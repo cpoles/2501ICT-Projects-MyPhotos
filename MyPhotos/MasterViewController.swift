@@ -115,6 +115,31 @@ class MasterViewController: UICollectionViewController, DetailViewControllerDele
     
     func savePhotoCollection() {
         
+        // append default photos
+        photoCollection.append(Photo(title: "QUT", url: "https://upload.wikimedia.org/wikipedia/en/thumb/9/9a/Queensland_University_of_Technology_(logo).svg/1017px-Queensland_University_of_Technology_(logo).svg.png", tags: ["qut", "queensland", "university"]))
+        photoCollection.append(Photo(title: "Griffith University", url: "https://upload.wikimedia.org/wikipedia/en/2/2a/Griffith_University_logo.png", tags: ["griffith", "queensland", "university"]))
+        photoCollection.append(Photo(title: "ACU", url: "http://www.pccevents.com.au/wp-content/uploads/2011/03/logo-acu-small.jpg", tags: ["catholic", "queensland", "university"]))
+        
+        // create path from Directory for the class for the converted class into a property list to be saved.
+        
+        let path = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true).first! as NSString
+        
+        // convert array into NSDictionary format
+        
+        let arrayPhotoDic = photoCollection.map { $0.propertyListRepresentation() }
+        
+        // create NSData object to write data to file
+        let data: NSData
+        try! data = NSJSONSerialization.dataWithJSONObject(arrayPhotoDic, options: .PrettyPrinted)
+        
+        // create json file
+        
+        let jsonFile = path.stringByAppendingPathComponent("photoCollection.json")
+        
+        //write data to file
+        
+       data.writeToFile(jsonFile, atomically: true)
+
         
     }
     
