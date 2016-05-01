@@ -34,6 +34,41 @@ class Photo {
     
 }
 
+    // MARK: - Extension
+
+extension Photo : PropertyListable {
+    
+    // MARK: - Methods
+    
+    /**
+     - parameters:
+     - none
+     - The propertyListRepresentation function converts the photo object to NSDictionary format so that the Photo object can be represented as a JSON object and written to a json file.
+     - returns: NSDictionary
+     */
+    func propertyListRepresentation() -> NSDictionary {
+        let propertyList: NSDictionary = [
+            PropertyKey.titleKey : title!,
+            PropertyKey.urlKey : url,
+            PropertyKey.tagsKey : tags!
+        ]
+        return propertyList
+    }
+    
+    // MARK: - Initialization
+    
+    convenience init(propertyList: NSDictionary) {
+        let title = (propertyList.objectForKey(PropertyKey.titleKey) as! String) //parsing the value of the pair on the dictionary to the title property.
+        
+        let url = (propertyList.objectForKey(PropertyKey.urlKey) as! String)
+        let tags = (propertyList.objectForKey(PropertyKey.tagsKey) as! [String])
+        self.init(title: title, url: url, tags: tags)
+    }
+}
+
+// MARK: PropertyKey Struct
+
+
 /**
  The PropertyKey Struct holds the keys that will be used on the
  Dictionary returned by propertyListRepresentation().
@@ -50,6 +85,7 @@ struct PropertyKey {
     static let tagsKey = "tags" as NSString
     
 }
+
 // MARK: - Equatable
 
 func ==(lhs: Photo, rhs: Photo) -> Bool {
