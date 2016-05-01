@@ -113,10 +113,9 @@ class DetailViewController: UIViewController, UITextFieldDelegate {
         print("back to the main view...")
     }
     
-    
     @IBAction func buttonDelete(sender: UIBarButtonItem) {
         
-         
+        
     }
     
     

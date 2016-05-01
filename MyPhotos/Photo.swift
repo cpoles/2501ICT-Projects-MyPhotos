@@ -41,10 +41,10 @@ extension Photo : PropertyListable {
     // MARK: - Methods
     
     /**
-     - parameters:
-     - none
-     - The propertyListRepresentation function converts the photo object to NSDictionary format so that the Photo object can be represented as a JSON object and written to a json file.
-     - returns: NSDictionary
+     
+        The propertyListRepresentation function converts the photo object to NSDictionary format so that the Photo object can be represented as a JSON object and written to a json file.
+        - parameters: none
+        - returns: NSDictionary
      */
     func propertyListRepresentation() -> NSDictionary {
         let propertyList: NSDictionary = [

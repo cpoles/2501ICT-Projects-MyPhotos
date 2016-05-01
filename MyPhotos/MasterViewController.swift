@@ -77,6 +77,15 @@ class MasterViewController: UICollectionViewController, DetailViewControllerDele
     
     // MARK: - Methods
     
+    /**
+        This function allows control back to the user, while downloading the photos on the background.
+     
+        parameters: (_:Photo)
+        - returns: - Void
+     
+     
+     */
+    
     func loadPhotoInBackground(photo: Photo) {
         let queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0)
         
@@ -97,6 +106,18 @@ class MasterViewController: UICollectionViewController, DetailViewControllerDele
         
         dispatch_async(queue, backgroundDownload)
     }
+    
+    func loadPhotoCollection() {
+        
+        
+        
+    }
+    
+    func savePhotoCollection() {
+        
+        
+    }
+    
     
     // MARK: - UIDetailViewControllerDelegate
     
