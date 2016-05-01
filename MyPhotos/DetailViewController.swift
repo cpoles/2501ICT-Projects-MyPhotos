@@ -10,6 +10,7 @@ import UIKit
 
 protocol DetailViewControllerDelegate {
     func destinationViewControllerContentChanged(destinationViewController: DetailViewController)
+    func deletePhoto()
 }
 
 class DetailViewController: UIViewController, UITextFieldDelegate {
@@ -93,6 +94,8 @@ class DetailViewController: UIViewController, UITextFieldDelegate {
         print("View Refreshed")
     }
     
+    
+    
     @IBAction func buttonBack(sender: UIBarButtonItem) {
         
         //rebuilding the object before go back to MasterViewController
@@ -117,6 +120,7 @@ class DetailViewController: UIViewController, UITextFieldDelegate {
         let title = "\(photo!.title)"
         let alertVC = UIAlertController(title: "Delete \(title)?", message: "Are you sure? It will be permanently lost.", preferredStyle: .ActionSheet)
         let deleteAction = UIAlertAction(title: "Delete", style: .Destructive) { (action: UIAlertAction) in
+            self.delegate?.deletePhoto()
             print("delete pressed")
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { (action: UIAlertAction) in

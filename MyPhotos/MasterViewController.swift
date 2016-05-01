@@ -170,6 +170,7 @@ class MasterViewController: UICollectionViewController, DetailViewControllerDele
         
     }
     
+        
     func loadSamplePhotos() {
         
         // append default photos
@@ -197,5 +198,21 @@ class MasterViewController: UICollectionViewController, DetailViewControllerDele
         self.collectionView?.reloadData()
     }
     
+    func deletePhoto() {
+        
+        let indexPaths = self.collectionView?.indexPathsForSelectedItems()
+        let indexPath = indexPaths![0] as NSIndexPath
+        self.collectionView?.deleteItemsAtIndexPaths([indexPath])
+        // save the photo collection and write to the json file
+        savePhotoCollection()
+        loadPhotoCollection()
+        
+        dismissViewControllerAnimated(true, completion: nil)
+        // refresh the collection view.
+        self.collectionView?.reloadData()
+        
+    }
+
+
 } // end of MasterViewController Class
 
