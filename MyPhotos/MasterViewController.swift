@@ -28,6 +28,7 @@ class MasterViewController: UICollectionViewController, DetailViewControllerDele
                 photoCollection += savedPhotoCollection
         } else {
             // Load the sample photos
+            loadSamplePhotos()
         }
         
         for photo in photoCollection {
@@ -178,6 +179,13 @@ class MasterViewController: UICollectionViewController, DetailViewControllerDele
     func destinationViewControllerContentChanged(destinationViewController: DetailViewController) {
         if let photo = destinationViewController.detailItem {
             print("Got \(photo)")
+            
+            // append the photo to the collection
+            photoCollection.append(photo as! Photo)
+            
+            // save the photo collection and write to the json file
+            savePhotoCollection()
+            
             dismissViewControllerAnimated(true, completion: nil)
             // reload the new picture in the background
             loadPhotoInBackground(photo as! Photo)
