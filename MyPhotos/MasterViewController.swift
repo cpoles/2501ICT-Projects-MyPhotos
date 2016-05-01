@@ -13,6 +13,8 @@ class MasterViewController: UICollectionViewController, DetailViewControllerDele
     // MARK: - Properties
     
     var photoCollection = [Photo]()
+    
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,19 +22,18 @@ class MasterViewController: UICollectionViewController, DetailViewControllerDele
         // set the navigation bar background colour as black
         self.navigationController?.navigationBar.barTintColor = UIColor.blackColor()
         self.navigationController!.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.orangeColor()]
-        // Append photos to the array.
         
         // Load any saved photos, otherwise, load the sample photoCollection
         
         if let savedPhotoCollection = loadPhotoCollection() {
                 photoCollection += savedPhotoCollection
+            for photo in photoCollection {
+                loadPhotoInBackground(photo)
+            }
         } else {
-            // Load the sample photos
-            loadSamplePhotos()
-        }
-        
-        for photo in photoCollection {
-            loadPhotoInBackground(photo)
+            for photo in photoCollection {
+                loadPhotoInBackground(photo)
+            }
         }
         
     }
@@ -114,30 +115,34 @@ class MasterViewController: UICollectionViewController, DetailViewControllerDele
     
     func loadPhotoCollection() -> [Photo]? {
         
+        var photoLoaded = [Photo]()
         // build the photo collection for the jsonFile
         let path = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true).first! as NSString
         // creating path and looking for file.
         
-        let jsonFile = path.stringByAppendingPathComponent("photoCollection.json")
+        let jsonFile = path.stringByAppendingPathComponent("photoCollection.json") as String?
         
-        // create NSData object
-        let jsonData = NSData(contentsOfFile: jsonFile)
-        
-        // create the array of dictionaries out of the jsonData NSData object
-        
-        let jsonArrayDic: [NSDictionary]
-        
-        try! jsonArrayDic = NSJSONSerialization.JSONObjectWithData(jsonData!, options: []) as! [NSDictionary]
-        
-        // create the array of Photo objects parsing a trailing closure to the map function of the jsonArrayDic
-        // The closure will build a Photo object for each dictionary inside the jsonArrayDic
-        
-        let loadedPhotoCollection = jsonArrayDic.map { Photo(propertyList: $0) }
-        
-        return loadedPhotoCollection
-
-        
-    }
+        if let file = jsonFile {
+            
+            // create NSData object
+            let jsonData = NSData(contentsOfFile: file)
+            
+            // create the array of dictionaries out of the jsonData NSData object
+            
+            let jsonArrayDic: [NSDictionary]
+            
+            if let data = jsonData {
+                
+                try! jsonArrayDic = NSJSONSerialization.JSONObjectWithData(data, options: []) as! [NSDictionary]
+                // create the array of Photo objects parsing a trailing closure to the map function of the jsonArrayDic
+                // The closure will build a Photo object for each dictionary inside the jsonArrayDic
+                
+                let loadedPhotoCollection = jsonArrayDic.map { Photo(propertyList: $0) }
+                 photoLoaded = loadedPhotoCollection
+            }
+        }
+        return photoLoaded
+}
     
     func savePhotoCollection() {
 
@@ -180,11 +185,9 @@ class MasterViewController: UICollectionViewController, DetailViewControllerDele
         if let photo = destinationViewController.detailItem {
             print("Got \(photo)")
             
-            // append the photo to the collection
-            photoCollection.append(photo as! Photo)
-            
             // save the photo collection and write to the json file
             savePhotoCollection()
+            loadPhotoCollection()
             
             dismissViewControllerAnimated(true, completion: nil)
             // reload the new picture in the background
