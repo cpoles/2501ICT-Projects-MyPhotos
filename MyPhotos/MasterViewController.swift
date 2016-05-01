@@ -13,6 +13,7 @@ class MasterViewController: UICollectionViewController, DetailViewControllerDele
     // MARK: - Properties
     
     var photoCollection = [Photo]()
+    //var indexPathSelected: [NSIndexPath]?
     
 
 
@@ -31,6 +32,7 @@ class MasterViewController: UICollectionViewController, DetailViewControllerDele
                 loadPhotoInBackground(photo)
             }
         } else {
+            photoCollection = loadSamplePhotos()
             for photo in photoCollection {
                 loadPhotoInBackground(photo)
             }
@@ -171,12 +173,14 @@ class MasterViewController: UICollectionViewController, DetailViewControllerDele
     }
     
         
-    func loadSamplePhotos() {
+    func loadSamplePhotos() -> [Photo] {
         
         // append default photos
         photoCollection.append(Photo(title: "QUT", url: "https://upload.wikimedia.org/wikipedia/en/thumb/9/9a/Queensland_University_of_Technology_(logo).svg/1017px-Queensland_University_of_Technology_(logo).svg.png", tags: ["qut", "queensland", "university"]))
         photoCollection.append(Photo(title: "Griffith University", url: "https://upload.wikimedia.org/wikipedia/en/2/2a/Griffith_University_logo.png", tags: ["griffith", "queensland", "university"]))
         photoCollection.append(Photo(title: "ACU", url: "http://www.pccevents.com.au/wp-content/uploads/2011/03/logo-acu-small.jpg", tags: ["catholic", "queensland", "university"]))
+        
+        return photoCollection
     }
     
     
@@ -199,21 +203,20 @@ class MasterViewController: UICollectionViewController, DetailViewControllerDele
     }
     
     func deletePhoto(destinationViewController: DetailViewController) {
-        if let photo = destinationViewController.detailItem {
         
-            let indexPaths = photo.indexPathsForSelectedItems()
-            let indexPath = indexPaths![0] as NSIndexPath
-            self.collectionView?.deleteItemsAtIndexPaths([indexPath])
-            print("item deleted.")
-            // save the photo collection and write to the json file
-            savePhotoCollection()
-            loadPhotoCollection()
+        if let photo = destinationViewController.detailItem {
+            
+            let index = photoCollection.indexOf({ $0 == photo as! Photo  })
+            
+            photoCollection.removeAtIndex(index!)
             
             dismissViewControllerAnimated(true, completion: nil)
-            // refresh the collection view.
-            self.collectionView?.reloadData()
-        }
+            print("item deleted.")
         
+        }
+        // refresh the collection view.
+        savePhotoCollection()
+        self.collectionView?.reloadData()
     }
 
 

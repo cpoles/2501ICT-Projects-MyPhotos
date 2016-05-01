@@ -120,8 +120,9 @@ class DetailViewController: UIViewController, UITextFieldDelegate {
         let title = "\(photo!.title)"
         let alertVC = UIAlertController(title: "Delete \(title)?", message: "Are you sure? It will be permanently lost.", preferredStyle: .ActionSheet)
         let deleteAction = UIAlertAction(title: "Delete", style: .Destructive) { (action: UIAlertAction) in
-            self.delegate?.deletePhoto(self)
             print("delete pressed")
+            self.delegate?.deletePhoto(self)
+            
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { (action: UIAlertAction) in
             self.dismissViewControllerAnimated(true, completion: nil)
