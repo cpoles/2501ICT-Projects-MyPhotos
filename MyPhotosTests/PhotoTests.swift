@@ -90,6 +90,22 @@ class PhotoTests: XCTestCase {
         }
     }
     
+    func testConvertToPropertyList() {
+        
+        var photoCollection = [Photo]()
+        
+        photoCollection.append(Photo(title: "QUT", url: "https://upload.wikimedia.org/wikipedia/en/thumb/9/9a/Queensland_University_of_Technology_(logo).svg/1017px-Queensland_University_of_Technology_(logo).svg.png", tags: ["qut", "queensland", "university"]))
+        photoCollection.append(Photo(title: "Griffith University", url: "https://upload.wikimedia.org/wikipedia/en/2/2a/Griffith_University_logo.png", tags: ["griffith", "queensland", "university"]))
+        photoCollection.append(Photo(title: "ACU", url: "http://www.pccevents.com.au/wp-content/uploads/2011/03/logo-acu-small.jpg", tags: ["catholic", "queensland", "university"]))
+        
+        // convert array into NSDictionary format
+        
+        let arrayPhotoDic = photoCollection.map { $0.propertyListRepresentation() }
+        
+        XCTAssertTrue(NSJSONSerialization.isValidJSONObject(arrayPhotoDic))
+        
+    }
+    
     
     
 }

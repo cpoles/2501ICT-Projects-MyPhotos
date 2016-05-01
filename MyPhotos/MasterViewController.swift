@@ -12,7 +12,7 @@ class MasterViewController: UICollectionViewController, DetailViewControllerDele
     
     // MARK: - Properties
     
-    var photoColletion = [Photo]()
+    var photoCollection = [Photo]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,11 +22,11 @@ class MasterViewController: UICollectionViewController, DetailViewControllerDele
         self.navigationController!.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.orangeColor()]
         // Append photos to the array.
         
-        photoColletion.append(Photo(title: "QUT", url: "https://upload.wikimedia.org/wikipedia/en/thumb/9/9a/Queensland_University_of_Technology_(logo).svg/1017px-Queensland_University_of_Technology_(logo).svg.png", tags: ["qut", "queensland", "university"]))
-        photoColletion.append(Photo(title: "Griffith University", url: "https://upload.wikimedia.org/wikipedia/en/2/2a/Griffith_University_logo.png", tags: ["griffith", "queensland", "university"]))
-        photoColletion.append(Photo(title: "ACU", url: "http://www.pccevents.com.au/wp-content/uploads/2011/03/logo-acu-small.jpg", tags: ["catholic", "queensland", "university"]))
+        photoCollection.append(Photo(title: "QUT", url: "https://upload.wikimedia.org/wikipedia/en/thumb/9/9a/Queensland_University_of_Technology_(logo).svg/1017px-Queensland_University_of_Technology_(logo).svg.png", tags: ["qut", "queensland", "university"]))
+        photoCollection.append(Photo(title: "Griffith University", url: "https://upload.wikimedia.org/wikipedia/en/2/2a/Griffith_University_logo.png", tags: ["griffith", "queensland", "university"]))
+        photoCollection.append(Photo(title: "ACU", url: "http://www.pccevents.com.au/wp-content/uploads/2011/03/logo-acu-small.jpg", tags: ["catholic", "queensland", "university"]))
         
-        for photo in photoColletion {
+        for photo in photoCollection {
             loadPhotoInBackground(photo)
         }
         
@@ -40,13 +40,13 @@ class MasterViewController: UICollectionViewController, DetailViewControllerDele
     // MARK: - Collection View
     
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.photoColletion.count
+        return self.photoCollection.count
     }
     
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         // create cell as CollectionViewCell object
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("collectionCell", forIndexPath: indexPath) as! CollectionViewCell
-        if let picture =  photoColletion[indexPath.row].imageData {
+        if let picture =  photoCollection[indexPath.row].imageData {
             cell.imageCell.image = UIImage(data: picture)
         }
         return cell
@@ -59,13 +59,13 @@ class MasterViewController: UICollectionViewController, DetailViewControllerDele
             let destinationViewController = segue.destinationViewController as! DetailViewController
             let indexPaths = self.collectionView?.indexPathsForSelectedItems()
             let indexPath = indexPaths![0] as NSIndexPath
-            destinationViewController.detailItem = photoColletion[indexPath.row]
+            destinationViewController.detailItem = photoCollection[indexPath.row]
             destinationViewController.delegate = self
             print("Show Detail")
         } else if segue.identifier == "addPhoto" {
             let photo = Photo(url: "")
             photo.imageData = nil
-            photoColletion.append(photo)
+            photoCollection.append(photo)
             let controller = segue.destinationViewController as! DetailViewController
             controller.detailItem = photo
             controller.delegate = self
