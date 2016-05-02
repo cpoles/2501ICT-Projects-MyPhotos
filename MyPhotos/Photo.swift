@@ -6,7 +6,7 @@
 //  Copyright © 2016 Carlos Poles. All rights reserved.
 //
 
-import Foundation
+import Foundation 
 
 protocol PropertyListable {
     func propertyListRepresentation() -> NSDictionary
