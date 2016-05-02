@@ -67,17 +67,4 @@ class MyPhotosUITests: XCTestCase {
         
     }
     
-    func testCancelDeletion() {
-        
-        let app = XCUIApplication()
-        app.collectionViews.childrenMatchingType(.Cell).elementBoundByIndex(2).otherElements.childrenMatchingType(.Image).element.tap()
-        app.navigationBars["Detail View"].buttons["Delete"].tap()
-        
-        let cancelButton = app.sheets["Delete QUT?"].buttons["Cancel"]
-        cancelButton.tap()
-        
-        
-        
-    }
-    
 }
