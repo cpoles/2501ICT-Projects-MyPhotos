@@ -176,7 +176,7 @@ class MasterViewController: UICollectionViewController, DetailViewControllerDele
     func destinationViewControllerContentChanged(destinationViewController: DetailViewController) {
         if let photo = destinationViewController.detailItem {
             print("Got \(photo)")
-            
+             
             // save the photo collection and write to the json file
             savePhotoCollection()
             loadPhotoCollection()
