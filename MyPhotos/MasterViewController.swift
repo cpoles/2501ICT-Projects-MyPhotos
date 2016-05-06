@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MasterViewController: UICollectionViewController, DetailViewControllerDelegate {
+class MasterViewController: UICollectionViewController, DetailViewControllerDelegate, FullPhotoViewControllerDelegate {
     
     // MARK: - Properties
     
@@ -56,7 +56,7 @@ class MasterViewController: UICollectionViewController, DetailViewControllerDele
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showFullPhoto" {
-            let destinationViewController = segue.destinationViewController as! DetailViewController
+            let destinationViewController = segue.destinationViewController as! FullPhotoViewController
             let indexPaths = self.collectionView?.indexPathsForSelectedItems()
             let indexPath = indexPaths![0] as NSIndexPath
             destinationViewController.detailItem = photoCollection[indexPath.row]
@@ -218,7 +218,14 @@ class MasterViewController: UICollectionViewController, DetailViewControllerDele
     
     // MARK: - FullPhotoViewControllerDelegate
     
+    func nextItemFor(viewController: FullPhotoViewController) {
+        
+        
+    }
     
+    func previousItemFor(viewController: FullPhotoViewController) {
+        
+    }
 
 
 } // end of MasterViewController Class

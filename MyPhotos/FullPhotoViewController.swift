@@ -21,10 +21,20 @@ class FullPhotoViewController: UIViewController {
     
     var delegate: FullPhotoViewControllerDelegate?
     
+    var detailItem: AnyObject? {
+        didSet {
+            self.configureView()
+            print("Detail Item was set.")
+        }
+    }
+    
+    var photo: Photo?
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        self.configureView()
     }
 
     override func didReceiveMemoryWarning() {
@@ -32,6 +42,25 @@ class FullPhotoViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func configureView() {
+        if let photoItem = self.detailItem as? Photo {
+            photo = photoItem
+            if let data = NSData(contentsOfURL: NSURL(string: (photo?.url)!)!) {
+                photo?.imageData = data
+                imgFullPhoto.image = UIImage(data: data)
+                
+            }
+            print("Photo is not nil")
+        } else {
+            print("photo is nil")
+        }
+        
+        
+        
+        
+        
+        
+    }
     
     /*
     // MARK: - Navigation
