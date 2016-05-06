@@ -59,9 +59,13 @@ class FullPhotoViewController: UIViewController {
     }
     
     @IBAction func swipeRight(sender: UISwipeGestureRecognizer) {
+        
+        
     }
         
     @IBAction func swipeLeft(sender: UISwipeGestureRecognizer) {
+        
+        
     }
 
 }

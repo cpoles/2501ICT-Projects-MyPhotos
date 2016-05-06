@@ -117,23 +117,25 @@ class DetailViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func buttonDelete(sender: UIBarButtonItem) {
-        let title = photo!.title
-        let alertVC = UIAlertController(title: "Delete \(title!)?", message: "Are you sure? It will be permanently lost.", preferredStyle: .ActionSheet)
-        let deleteAction = UIAlertAction(title: "Delete", style: .Destructive) { (action: UIAlertAction) in
-            print("delete pressed")
-            self.delegate?.deletePhoto(self)
+        if let title = photo!.title {
+            let alertVC = UIAlertController(title: "Delete \(title)?", message: "Are you sure? It will be permanently lost.", preferredStyle: .ActionSheet)
+            let deleteAction = UIAlertAction(title: "Delete", style: .Destructive) { (action: UIAlertAction) in
+                print("delete pressed")
+                self.delegate?.deletePhoto(self)
+                
+            }
+            let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { (action: UIAlertAction) in
+                self.dismissViewControllerAnimated(true, completion: nil)
+                print("Cancelling...")
+            }
+            alertVC.addAction(deleteAction)
+            alertVC.addAction(cancelAction)
+            presentViewController(alertVC, animated: true) {
+                print("Showing AlertVC")
+            }
             
         }
-        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { (action: UIAlertAction) in
-            self.dismissViewControllerAnimated(true, completion: nil)
-            print("Cancelling...")
-        }
-        alertVC.addAction(deleteAction)
-        alertVC.addAction(cancelAction)
-        presentViewController(alertVC, animated: true) {
-            print("Showing AlertVC")
-        }
     }
-
-   
+    
+    
 }
