@@ -58,6 +58,18 @@ class FullPhotoViewController: UIViewController {
         }
     }
     
+    
+    // MARK: - Segues
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "showDetail" {
+            let controller = segue.destinationViewController  as! DetailViewController
+            controller.detailItem = self.detailItem
+        }
+    }
+    
+    // MARK: - Actions
+    
     @IBAction func swipeRight(sender: UISwipeGestureRecognizer) {
         delegate?.previousItemFor(self)
         
