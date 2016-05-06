@@ -33,9 +33,6 @@ class FullPhotoViewController: UIViewController {
     }
     
     
-    
-    
-    
     /*
     // MARK: - Navigation
 

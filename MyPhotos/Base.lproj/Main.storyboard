@@ -42,7 +42,7 @@
                                 </constraints>
                                 <connections>
                                     <outlet property="imageCell" destination="tXd-hZ-478" id="jsK-ar-4FI"/>
-                                    <segue destination="8bM-KR-YUR" kind="presentation" id="5iy-8i-Bj5"/>
+                                    <segue destination="8bM-KR-YUR" kind="presentation" identifier="showFullPhoto" id="5iy-8i-Bj5"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -76,8 +76,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="u32-0m-vYQ">
-                                <rect key="frame" x="20" y="28" width="560" height="552"/>
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="u32-0m-vYQ">
+                                <rect key="frame" x="20" y="184" width="560" height="234"/>
                                 <gestureRecognizers/>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="rTl-9h-8mr" appends="YES" id="HCZ-Vz-7hb"/>
@@ -86,12 +86,12 @@
                                 </connections>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="u32-0m-vYQ" firstAttribute="leading" secondItem="4y7-TX-BRh" secondAttribute="leadingMargin" id="6Ms-qt-BgW"/>
-                            <constraint firstAttribute="bottom" secondItem="u32-0m-vYQ" secondAttribute="bottom" constant="20" symbolic="YES" id="K1w-zp-c8D"/>
+                            <constraint firstAttribute="bottom" secondItem="u32-0m-vYQ" secondAttribute="bottom" constant="182" id="K1w-zp-c8D"/>
                             <constraint firstItem="u32-0m-vYQ" firstAttribute="trailing" secondItem="4y7-TX-BRh" secondAttribute="trailingMargin" id="bRI-GD-CAh"/>
-                            <constraint firstItem="u32-0m-vYQ" firstAttribute="top" secondItem="4qT-zC-wa8" secondAttribute="bottom" constant="8" symbolic="YES" id="nGa-cM-bVO"/>
+                            <constraint firstItem="u32-0m-vYQ" firstAttribute="top" secondItem="4qT-zC-wa8" secondAttribute="bottom" constant="164" id="nGa-cM-bVO"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="v7e-EV-0mR"/>
@@ -100,7 +100,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tk8-z4-6rT" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="rTl-9h-8mr"/>
+                <tapGestureRecognizer id="rTl-9h-8mr">
+                    <connections>
+                        <segue destination="iiA-09-OIO" kind="presentation" identifier="showDetail" id="0n0-pt-DEi"/>
+                    </connections>
+                </tapGestureRecognizer>
                 <swipeGestureRecognizer direction="left" id="fCJ-wi-Y8l"/>
                 <swipeGestureRecognizer direction="right" id="VCF-aR-VPm"/>
             </objects>
@@ -297,6 +301,6 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="5iy-8i-Bj5"/>
-        <segue reference="iyZ-Iq-VRG"/>
+        <segue reference="0n0-pt-DEi"/>
     </inferredMetricsTieBreakers>
 </document>

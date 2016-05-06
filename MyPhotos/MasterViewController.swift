@@ -55,7 +55,7 @@ class MasterViewController: UICollectionViewController, DetailViewControllerDele
     // MARK: - Segues
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "showDetail" {
+        if segue.identifier == "showFullPhoto" {
             let destinationViewController = segue.destinationViewController as! DetailViewController
             let indexPaths = self.collectionView?.indexPathsForSelectedItems()
             let indexPath = indexPaths![0] as NSIndexPath
