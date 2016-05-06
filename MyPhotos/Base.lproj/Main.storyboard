@@ -42,6 +42,7 @@
                                 </constraints>
                                 <connections>
                                     <outlet property="imageCell" destination="tXd-hZ-478" id="jsK-ar-4FI"/>
+                                    <segue destination="8bM-KR-YUR" kind="presentation" id="5iy-8i-Bj5"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -61,12 +62,12 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ont-oQ-DhZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1483" y="255"/>
+            <point key="canvasLocation" x="621" y="277"/>
         </scene>
-        <!--View Controller-->
+        <!--Full Photo View Controller-->
         <scene sceneID="cIJ-Rb-Q5G">
             <objects>
-                <viewController id="8bM-KR-YUR" sceneMemberID="viewController">
+                <viewController id="8bM-KR-YUR" customClass="FullPhotoViewController" customModule="MyPhotos" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="4qT-zC-wa8"/>
                         <viewControllerLayoutGuide type="bottom" id="n0r-Qz-WuP"/>
@@ -80,7 +81,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tk8-z4-6rT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2949" y="255"/>
+            <point key="canvasLocation" x="1614" y="119"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="MA9-H6-lRM">
@@ -214,7 +215,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="alL-Ml-aRc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3654" y="73"/>
+            <point key="canvasLocation" x="1614" y="-583"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="U65-n2-90h">
@@ -232,7 +233,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gcP-a1-OkY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="638" y="321"/>
+            <point key="canvasLocation" x="-94" y="277"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="P8k-P3-JOg">
@@ -250,7 +251,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7KQ-xA-Jnh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2058" y="1039"/>
+            <point key="canvasLocation" x="578" y="-569"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="vDh-Vu-dab">
@@ -268,10 +269,11 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t5z-r5-uYr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2137" y="255"/>
+            <point key="canvasLocation" x="758" y="1211"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="5iy-8i-Bj5"/>
         <segue reference="iyZ-Iq-VRG"/>
     </inferredMetricsTieBreakers>
 </document>

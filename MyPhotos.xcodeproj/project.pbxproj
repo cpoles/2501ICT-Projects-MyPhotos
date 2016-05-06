@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7720277A1CDC7C770015D612 /* FullPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772027791CDC7C770015D612 /* FullPhotoViewController.swift */; };
 		774EEACC1CCCEE82007721D8 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774EEACB1CCCEE82007721D8 /* CollectionViewCell.swift */; };
 		774EEACE1CCCF0FD007721D8 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774EEACD1CCCF0FD007721D8 /* DetailViewController.swift */; };
 		777F184C1CCC699F0092C5B2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 777F184B1CCC699F0092C5B2 /* AppDelegate.swift */; };
@@ -38,6 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		772027791CDC7C770015D612 /* FullPhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullPhotoViewController.swift; sourceTree = "<group>"; };
 		774EEACB1CCCEE82007721D8 /* CollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		774EEACD1CCCF0FD007721D8 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		777F18481CCC699F0092C5B2 /* MyPhotos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyPhotos.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -105,6 +107,7 @@
 		777F184A1CCC699F0092C5B2 /* MyPhotos */ = {
 			isa = PBXGroup;
 			children = (
+				772027791CDC7C770015D612 /* FullPhotoViewController.swift */,
 				777F187B1CCC7B240092C5B2 /* Photo.swift */,
 				777F184D1CCC699F0092C5B2 /* MasterViewController.swift */,
 				774EEACD1CCCF0FD007721D8 /* DetailViewController.swift */,
@@ -268,6 +271,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7720277A1CDC7C770015D612 /* FullPhotoViewController.swift in Sources */,
 				774EEACC1CCCEE82007721D8 /* CollectionViewCell.swift in Sources */,
 				777F187C1CCC7B240092C5B2 /* Photo.swift in Sources */,
 				777F184E1CCC699F0092C5B2 /* MasterViewController.swift in Sources */,
