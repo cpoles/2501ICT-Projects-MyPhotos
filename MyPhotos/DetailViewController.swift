@@ -8,6 +8,10 @@
 
 import UIKit
 
+/**
+ This protocol allows for the delegate to update, edit and delete the records in the photoCollection according to the actions and the subviews of the DetailViewController.
+ */
+
 protocol DetailViewControllerDelegate {
     func destinationViewControllerContentChanged(destinationViewController: DetailViewController)
     func deletePhoto(destinationViewController: DetailViewController)
@@ -96,7 +100,7 @@ class DetailViewController: UIViewController, UITextFieldDelegate {
         print("View Refreshed")
     }
     
-    
+    // MARK: - Actions
     
     @IBAction func buttonBack(sender: UIBarButtonItem) {
         

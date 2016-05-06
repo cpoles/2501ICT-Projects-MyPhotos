@@ -34,7 +34,6 @@ class FullPhotoViewController: UIViewController {
     
     var photo: Photo?
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -73,6 +72,8 @@ class FullPhotoViewController: UIViewController {
         if segue.identifier == "showDetail" {
             let controller = segue.destinationViewController  as! DetailViewController
             controller.detailItem = self.detailItem
+            
+            // cast this delegate as DetailViewControllerDelegate so the destinatationViewController can have the master view as its delegate.
             controller.delegate = self.delegate as? DetailViewControllerDelegate
         }
     }
