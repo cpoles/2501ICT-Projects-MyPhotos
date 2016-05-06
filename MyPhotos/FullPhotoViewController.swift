@@ -20,7 +20,6 @@ class FullPhotoViewController: UIViewController {
     // MARK - Properties
     
     var delegate: FullPhotoViewControllerDelegate?
-    var delegate2: DetailViewControllerDelegate?
     
     var detailItem: AnyObject? {
         didSet {

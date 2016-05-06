@@ -37,6 +37,8 @@ class DetailViewController: UIViewController, UITextFieldDelegate {
     
     var delegate: DetailViewControllerDelegate?
     
+    var currentIndexPath = NSIndexPath()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
