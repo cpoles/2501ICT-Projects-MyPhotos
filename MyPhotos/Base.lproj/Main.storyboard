@@ -75,9 +75,23 @@
                     <view key="view" contentMode="scaleToFill" id="4y7-TX-BRh">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="u32-0m-vYQ">
+                                <rect key="frame" x="20" y="28" width="560" height="552"/>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="u32-0m-vYQ" firstAttribute="leading" secondItem="4y7-TX-BRh" secondAttribute="leadingMargin" id="6Ms-qt-BgW"/>
+                            <constraint firstAttribute="bottom" secondItem="u32-0m-vYQ" secondAttribute="bottom" constant="20" symbolic="YES" id="K1w-zp-c8D"/>
+                            <constraint firstItem="u32-0m-vYQ" firstAttribute="trailing" secondItem="4y7-TX-BRh" secondAttribute="trailingMargin" id="bRI-GD-CAh"/>
+                            <constraint firstItem="u32-0m-vYQ" firstAttribute="top" secondItem="4qT-zC-wa8" secondAttribute="bottom" constant="8" symbolic="YES" id="nGa-cM-bVO"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="v7e-EV-0mR"/>
+                    <connections>
+                        <outlet property="imgFullPhoto" destination="u32-0m-vYQ" id="f2Q-2T-7yi"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tk8-z4-6rT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -10,6 +10,9 @@ import UIKit
 
 class FullPhotoViewController: UIViewController {
 
+    @IBOutlet weak var imgFullPhoto: UIImageView!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
