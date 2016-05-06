@@ -67,4 +67,17 @@ class MyPhotosUITests: XCTestCase {
         
     }
     
+    func testGoToPhotoFullView() {
+        
+        
+        let app = XCUIApplication()
+        let collectionViewQuery = app.collectionViews
+        let secondItem = collectionViewQuery.childrenMatchingType(.Cell).elementBoundByIndex(1)
+        let imageOfSecondItem = secondItem.otherElements.childrenMatchingType(.Image).element
+        
+        imageOfSecondItem.tap()
+
+        
+    }
+    
 }
