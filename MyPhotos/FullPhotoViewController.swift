@@ -20,6 +20,7 @@ class FullPhotoViewController: UIViewController {
     // MARK - Properties
     
     var delegate: FullPhotoViewControllerDelegate?
+    var delegate2: DetailViewControllerDelegate?
     
     var detailItem: AnyObject? {
         didSet {
@@ -65,6 +66,7 @@ class FullPhotoViewController: UIViewController {
         if segue.identifier == "showDetail" {
             let controller = segue.destinationViewController  as! DetailViewController
             controller.detailItem = self.detailItem
+            controller.delegate = self.delegate as? DetailViewControllerDelegate
         }
     }
     
