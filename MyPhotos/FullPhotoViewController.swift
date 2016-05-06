@@ -8,6 +8,10 @@
 
 import UIKit
 
+/**
+    This protocol allows for the delegate to move through the photoCollection displayed in the FullPhotoView
+*/
+
 protocol FullPhotoViewControllerDelegate {
     func nextItemFor(viewController: FullPhotoViewController)
     func previousItemFor(viewController: FullPhotoViewController)
@@ -80,7 +84,6 @@ class FullPhotoViewController: UIViewController {
         - parameters:
             - (sender: UISwipeGestureRecognizer)
      
- 
     */
     
     @IBAction func swipeRight(sender: UISwipeGestureRecognizer) {
@@ -91,8 +94,7 @@ class FullPhotoViewController: UIViewController {
     /**
      swipeLeft action calls the delegate to execute the move to the next item of the photoCollection
      - parameters:
-     - (sender: UISwipeGestureRecognizer)
-     
+        - (sender: UISwipeGestureRecognizer)
      
      */
     
