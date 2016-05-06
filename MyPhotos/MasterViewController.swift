@@ -13,6 +13,7 @@ class MasterViewController: UICollectionViewController, DetailViewControllerDele
     // MARK: - Properties
     
     var photoCollection = [Photo]()
+    var currentIndexPath = NSIndexPath()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,6 +60,7 @@ class MasterViewController: UICollectionViewController, DetailViewControllerDele
             let destinationViewController = segue.destinationViewController as! FullPhotoViewController
             let indexPaths = self.collectionView?.indexPathsForSelectedItems()
             let indexPath = indexPaths![0] as NSIndexPath
+            currentIndexPath = indexPath
             destinationViewController.detailItem = photoCollection[indexPath.row]
             destinationViewController.delegate = self
             print("Show Detail")
@@ -220,11 +222,24 @@ class MasterViewController: UICollectionViewController, DetailViewControllerDele
     
     func nextItemFor(viewController: FullPhotoViewController) {
         
+        let row = currentIndexPath.row
+        let nextRow: Int
+        if row == photoCollection.count - 1 { nextRow = 0 }
+        else { nextRow = row + 1 }
+        let indexPath = NSIndexPath(forRow: nextRow, inSection: currentIndexPath.section)
+        currentIndexPath = indexPath
+        viewController.detailItem = photoCollection[nextRow]
         
     }
     
     func previousItemFor(viewController: FullPhotoViewController) {
-        
+        let row = currentIndexPath.row
+        let previousRow: Int
+        if row == 0 { previousRow = photoCollection.count - 1 }
+        else { previousRow = row - 1 }
+        let indexPath = NSIndexPath(forRow: previousRow, inSection: currentIndexPath.section)
+        currentIndexPath = indexPath
+        viewController.detailItem = photoCollection[previousRow]
     }
 
 
