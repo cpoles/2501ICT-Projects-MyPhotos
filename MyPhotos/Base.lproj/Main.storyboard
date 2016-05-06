@@ -78,6 +78,12 @@
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="u32-0m-vYQ">
                                 <rect key="frame" x="20" y="28" width="560" height="552"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="rTl-9h-8mr" appends="YES" id="HCZ-Vz-7hb"/>
+                                    <outletCollection property="gestureRecognizers" destination="fCJ-wi-Y8l" appends="YES" id="SOP-zN-INE"/>
+                                    <outletCollection property="gestureRecognizers" destination="VCF-aR-VPm" appends="YES" id="ktg-bG-NnW"/>
+                                </connections>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -94,6 +100,9 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tk8-z4-6rT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="rTl-9h-8mr"/>
+                <swipeGestureRecognizer direction="left" id="fCJ-wi-Y8l"/>
+                <swipeGestureRecognizer direction="right" id="VCF-aR-VPm"/>
             </objects>
             <point key="canvasLocation" x="1614" y="119"/>
         </scene>

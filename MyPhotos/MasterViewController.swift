@@ -161,6 +161,7 @@ class MasterViewController: UICollectionViewController, DetailViewControllerDele
        data.writeToFile(jsonFile, atomically: true)
     }
     
+    // MARK: - Delegation
     
     // MARK: - UIDetailViewControllerDelegate
     
@@ -214,6 +215,10 @@ class MasterViewController: UICollectionViewController, DetailViewControllerDele
         savePhotoCollection()
         self.collectionView?.reloadData()
     }
+    
+    // MARK: - FullPhotoViewControllerDelegate
+    
+    
 
 
 } // end of MasterViewController Class
