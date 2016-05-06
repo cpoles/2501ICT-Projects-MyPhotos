@@ -42,6 +42,11 @@ class FullPhotoViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    /**
+        The configureView() function retrieves the detailItem sent by the sourceViewController, casts it down to a Photo object, checks for the imageData and sets the image property of the UIImageView to display the corresponding photo.
+ 
+    */
+    
     func configureView() {
         if let photoItem = self.detailItem as? Photo {
             photo = photoItem
@@ -58,7 +63,6 @@ class FullPhotoViewController: UIViewController {
         }
     }
     
-    
     // MARK: - Segues
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -71,11 +75,27 @@ class FullPhotoViewController: UIViewController {
     
     // MARK: - Actions
     
+    /**
+        swipeRight action calls the delegate to execute the move to the previous item of the photoCollection
+        - parameters:
+            - (sender: UISwipeGestureRecognizer)
+     
+ 
+    */
+    
     @IBAction func swipeRight(sender: UISwipeGestureRecognizer) {
         delegate?.previousItemFor(self)
         
     }
-        
+    
+    /**
+     swipeLeft action calls the delegate to execute the move to the next item of the photoCollection
+     - parameters:
+     - (sender: UISwipeGestureRecognizer)
+     
+     
+     */
+    
     @IBAction func swipeLeft(sender: UISwipeGestureRecognizer) {
         
         delegate?.nextItemFor(self)
