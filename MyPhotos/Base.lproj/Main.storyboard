@@ -105,8 +105,16 @@
                         <segue destination="iiA-09-OIO" kind="presentation" identifier="showDetail" id="0n0-pt-DEi"/>
                     </connections>
                 </tapGestureRecognizer>
-                <swipeGestureRecognizer direction="left" id="fCJ-wi-Y8l"/>
-                <swipeGestureRecognizer direction="right" id="VCF-aR-VPm"/>
+                <swipeGestureRecognizer direction="left" id="fCJ-wi-Y8l">
+                    <connections>
+                        <action selector="swipeLeft:" destination="8bM-KR-YUR" id="7x6-eE-nJc"/>
+                    </connections>
+                </swipeGestureRecognizer>
+                <swipeGestureRecognizer direction="right" id="VCF-aR-VPm">
+                    <connections>
+                        <action selector="swipeRight:" destination="8bM-KR-YUR" id="W67-2W-dAf"/>
+                    </connections>
+                </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1678" y="333"/>
         </scene>
