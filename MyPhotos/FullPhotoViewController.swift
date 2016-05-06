@@ -47,19 +47,15 @@ class FullPhotoViewController: UIViewController {
             photo = photoItem
             if let data = NSData(contentsOfURL: NSURL(string: (photo?.url)!)!) {
                 photo?.imageData = data
-                imgFullPhoto.image = UIImage(data: data)
+                if let image = self.imgFullPhoto {
+                    image.image = UIImage(data: data)
+                }
                 
             }
             print("Photo is not nil")
         } else {
             print("photo is nil")
         }
-        
-        
-        
-        
-        
-        
     }
     
     /*
