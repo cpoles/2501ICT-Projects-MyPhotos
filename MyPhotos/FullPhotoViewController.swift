@@ -59,13 +59,13 @@ class FullPhotoViewController: UIViewController {
     }
     
     @IBAction func swipeRight(sender: UISwipeGestureRecognizer) {
-        
+        delegate?.nextItemFor(self)
         
     }
         
     @IBAction func swipeLeft(sender: UISwipeGestureRecognizer) {
         
-        
+        delegate?.nextItemFor(self)
     }
 
 }
