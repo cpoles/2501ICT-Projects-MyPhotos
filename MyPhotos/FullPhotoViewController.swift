@@ -8,10 +8,18 @@
 
 import UIKit
 
+protocol FullPhotoViewControllerDelegate {
+    func nextItemFor(viewController: FullPhotoViewController)
+    func previousItemFor(viewController: FullPhotoViewController)
+}
+
 class FullPhotoViewController: UIViewController {
 
     @IBOutlet weak var imgFullPhoto: UIImageView!
     
+    // MARK - Properties
+    
+    var delegate: FullPhotoViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,5 +42,6 @@ class FullPhotoViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
 
 }
