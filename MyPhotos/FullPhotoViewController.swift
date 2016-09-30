@@ -13,8 +13,8 @@ import UIKit
 */
 
 protocol FullPhotoViewControllerDelegate {
-    func nextItemFor(viewController: FullPhotoViewController)
-    func previousItemFor(viewController: FullPhotoViewController)
+    func nextItemFor(_ viewController: FullPhotoViewController)
+    func previousItemFor(_ viewController: FullPhotoViewController)
 }
 
 class FullPhotoViewController: UIViewController {
@@ -53,7 +53,7 @@ class FullPhotoViewController: UIViewController {
     func configureView() {
         if let photoItem = self.detailItem as? Photo {
             photo = photoItem
-            if let data = NSData(contentsOfURL: NSURL(string: (photo?.url)!)!) {
+            if let data = try? Data(contentsOf: URL(string: (photo?.url)!)!) {
                 photo?.imageData = data
                 if let image = self.imgFullPhoto {
                     image.image = UIImage(data: data)
@@ -68,9 +68,9 @@ class FullPhotoViewController: UIViewController {
     
     // MARK: - Segues
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDetail" {
-            let controller = segue.destinationViewController  as! DetailViewController
+            let controller = segue.destination  as! DetailViewController
             controller.detailItem = self.detailItem
             
             // cast this delegate as DetailViewControllerDelegate so the destinatationViewController can have the master view as its delegate.
@@ -87,7 +87,7 @@ class FullPhotoViewController: UIViewController {
      
     */
     
-    @IBAction func swipeRight(sender: UISwipeGestureRecognizer) {
+    @IBAction func swipeRight(_ sender: UISwipeGestureRecognizer) {
         delegate?.previousItemFor(self)
         
     }
@@ -99,7 +99,7 @@ class FullPhotoViewController: UIViewController {
      
      */
     
-    @IBAction func swipeLeft(sender: UISwipeGestureRecognizer) {
+    @IBAction func swipeLeft(_ sender: UISwipeGestureRecognizer) {
         
         delegate?.nextItemFor(self)
     }

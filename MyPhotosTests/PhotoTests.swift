@@ -54,7 +54,7 @@ class PhotoTests: XCTestCase {
     
     func testImageData() {
         let photo = Photo(title: "Photo Title", url: "http://stuffpoint.com/cartoons/image/95692-cartoons-cartoon.jpg", tags: ["bri", "bsjeu", "jeijdl", "lekjd"])
-        let imageDataToTest = NSData(contentsOfURL: NSURL(string: photo.url)!)
+        let imageDataToTest = try? Data(contentsOf: URL(string: photo.url)!)
         XCTAssertNotNil(imageDataToTest)
         photo.imageData = imageDataToTest
         XCTAssertEqual(photo.imageData, imageDataToTest)
@@ -110,7 +110,7 @@ class PhotoTests: XCTestCase {
         
         let arrayPhotoDic = photoCollection.map { $0.propertyListRepresentation() }
         
-        XCTAssertTrue(NSJSONSerialization.isValidJSONObject(arrayPhotoDic))
+        XCTAssertTrue(JSONSerialization.isValidJSONObject(arrayPhotoDic))
     }
     
     /**
@@ -130,23 +130,23 @@ class PhotoTests: XCTestCase {
         
         // create path from Directory for the class for the converted class into a property list to be saved.
         
-        let path = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true).first! as NSString
+        let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first! as NSString
         
         // convert array into NSDictionary format
         
         let arrayPhotoDic = photoCollection.map { $0.propertyListRepresentation() }
         
         // create NSData object to write data to file
-        let data: NSData
-        try! data = NSJSONSerialization.dataWithJSONObject(arrayPhotoDic, options: .PrettyPrinted)
+        let data: Data
+        try! data = JSONSerialization.data(withJSONObject: arrayPhotoDic, options: .prettyPrinted)
         
         // create json file
         
-        let jsonFile = path.stringByAppendingPathComponent("photoTest.json")
+        let jsonFile = path.appendingPathComponent("photoTest.json")
         
         //write data to file
         
-        XCTAssertTrue(data.writeToFile(jsonFile, atomically: true))
+        XCTAssertTrue((try? data.write(to: URL(fileURLWithPath: jsonFile), options: [.atomic])) != nil)
         
     }
     
@@ -167,33 +167,33 @@ class PhotoTests: XCTestCase {
         
         // create path from Directory for the class for the converted class into a property list to be saved.
         
-        let path = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true).first! as NSString
+        let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first! as NSString
         
         // convert array into NSDictionary format
         
         let arrayPhotoDic = photoCollection.map { $0.propertyListRepresentation() }
         
         // create NSData object to write data to file
-        let data: NSData
-        try! data = NSJSONSerialization.dataWithJSONObject(arrayPhotoDic, options: .PrettyPrinted)
+        let data: Data
+        try! data = JSONSerialization.data(withJSONObject: arrayPhotoDic, options: .prettyPrinted)
         
         // create json file
         
-        let jsonFile = path.stringByAppendingPathComponent("photoTest.json")
+        let jsonFile = path.appendingPathComponent("photoTest.json")
         
         //write data to file
-        data.writeToFile(jsonFile, atomically: true)
+        try? data.write(to: URL(fileURLWithPath: jsonFile), options: [.atomic])
         
         // build the photo collection for the jsonFile
         
         // create NSData object
-        let jsonData = NSData(contentsOfFile: jsonFile)
+        let jsonData = try? Data(contentsOf: URL(fileURLWithPath: jsonFile))
         
         // create the array of dictionaries out of the jsonData NSData object
         
         let jsonArrayDic: [NSDictionary]
         
-        try! jsonArrayDic = NSJSONSerialization.JSONObjectWithData(jsonData!, options: []) as! [NSDictionary]
+        try! jsonArrayDic = JSONSerialization.jsonObject(with: jsonData!, options: []) as! [NSDictionary]
         
         // create the array of Photo objects parsing a trailing closure to the map function of the jsonArrayDic
         // The closure will build a Photo object for each dictionary inside the jsonArrayDic

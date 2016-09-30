@@ -22,7 +22,7 @@ class Photo {
     /// the related photo tags.
     var tags: [String]?
     /// imageData is the representation of the image that will be downloaded from the url provided as NSData.
-    var imageData: NSData?
+    var imageData: Data?
     
     // MARK: - Initialization
     
@@ -58,10 +58,10 @@ extension Photo : PropertyListable {
     // MARK: - Initialization
     
     convenience init(propertyList: NSDictionary) {
-        let title = (propertyList.objectForKey(PropertyKey.titleKey) as! String) //parsing the value of the pair on the dictionary to the title property.
+        let title = (propertyList.object(forKey: PropertyKey.titleKey) as! String) //parsing the value of the pair on the dictionary to the title property.
         
-        let url = (propertyList.objectForKey(PropertyKey.urlKey) as! String)
-        let tags = (propertyList.objectForKey(PropertyKey.tagsKey) as! [String])
+        let url = (propertyList.object(forKey: PropertyKey.urlKey) as! String)
+        let tags = (propertyList.object(forKey: PropertyKey.tagsKey) as! [String])
         self.init(title: title, url: url, tags: tags)
     }
 }

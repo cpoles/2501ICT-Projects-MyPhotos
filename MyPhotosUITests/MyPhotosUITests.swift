@@ -33,17 +33,17 @@ class MyPhotosUITests: XCTestCase {
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
     
-    func wait(delay: NSTimeInterval = 2) {
-        let runLoop = NSRunLoop.mainRunLoop()
-        let someTimeInTheFuture = NSDate(timeIntervalSinceNow: delay)
-        runLoop.runUntilDate(someTimeInTheFuture)
+    func wait(_ delay: TimeInterval = 2) {
+        let runLoop = RunLoop.main
+        let someTimeInTheFuture = Date(timeIntervalSinceNow: delay)
+        runLoop.run(until: someTimeInTheFuture)
     }
     
     
-    func waitNumberOfTries(value: XCUIElement, _ t: NSTimeInterval = 3) {
+    func waitNumberOfTries(_ value: XCUIElement, _ t: TimeInterval = 3) {
         let exists = NSPredicate(format:  "exists == true")
-        let expectation = expectationForPredicate(exists, evaluatedWithObject: value, handler: nil)
-        waitForExpectationsWithTimeout(t, handler: nil)
+        let expectation = self.expectation(for: exists, evaluatedWith: value, handler: nil)
+        waitForExpectations(timeout: t, handler: nil)
         print(expectation)
     }
 
@@ -53,7 +53,7 @@ class MyPhotosUITests: XCTestCase {
         let app = XCUIApplication()
         wait()
         let addButton = app.navigationBars["MyPhotos.MasterView"].buttons["Add"]
-        let backButton = app.navigationBars["MyPhotos.DetailView"].childrenMatchingType(.Button).matchingIdentifier("Back").elementBoundByIndex(0)
+        let backButton = app.navigationBars["MyPhotos.DetailView"].children(matching: .button).matching(identifier: "Back").element(boundBy: 0)
         
         while !addButton.exists {
             wait()
@@ -72,8 +72,8 @@ class MyPhotosUITests: XCTestCase {
         
         let app = XCUIApplication()
         let collectionViewQuery = app.collectionViews
-        let secondItem = collectionViewQuery.childrenMatchingType(.Cell).elementBoundByIndex(1)
-        let imageOfSecondItem = secondItem.otherElements.childrenMatchingType(.Image).element
+        let secondItem = collectionViewQuery.children(matching: .cell).element(boundBy: 1)
+        let imageOfSecondItem = secondItem.otherElements.children(matching: .image).element
         
         imageOfSecondItem.tap()
 

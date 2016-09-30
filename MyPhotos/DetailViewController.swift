@@ -13,8 +13,8 @@ import UIKit
  */
 
 protocol DetailViewControllerDelegate {
-    func destinationViewControllerContentChanged(destinationViewController: DetailViewController)
-    func deletePhoto(destinationViewController: DetailViewController)
+    func destinationViewControllerContentChanged(_ destinationViewController: DetailViewController)
+    func deletePhoto(_ destinationViewController: DetailViewController)
 }
 
 class DetailViewController: UIViewController, UITextFieldDelegate {
@@ -41,7 +41,7 @@ class DetailViewController: UIViewController, UITextFieldDelegate {
     
     var delegate: DetailViewControllerDelegate?
     
-    var currentIndexPath = NSIndexPath()
+    var currentIndexPath = IndexPath()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,7 +62,7 @@ class DetailViewController: UIViewController, UITextFieldDelegate {
     
     // MARK: - UITextFieldDelegate
     
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         // Hide the keyboard.
         
         textTitle.resignFirstResponder()
@@ -87,12 +87,12 @@ class DetailViewController: UIViewController, UITextFieldDelegate {
             url.text = urlString
             
             // handling the tag property so it can be printed as string
-            let tagString =  photo?.tags?.joinWithSeparator(",")
+            let tagString =  photo?.tags?.joined(separator: ",")
             tags.text = tagString
             
             // handling the photo image data so it can be displayed as UIImage
             
-            if let photoImage = NSData(contentsOfURL: NSURL(string: photo!.url)!) {
+            if let photoImage = try? Data(contentsOf: URL(string: photo!.url)!) {
                 image.image = UIImage(data: photoImage)
             } 
             
@@ -102,7 +102,7 @@ class DetailViewController: UIViewController, UITextFieldDelegate {
     
     // MARK: - Actions
     
-    @IBAction func buttonBack(sender: UIBarButtonItem) {
+    @IBAction func buttonBack(_ sender: UIBarButtonItem) {
         
         //rebuilding the object before go back to MasterViewController
         
@@ -114,7 +114,7 @@ class DetailViewController: UIViewController, UITextFieldDelegate {
         
         // retrieve tags from the text field and convert it to an array
         let tagsString = textTags.text
-        let tags = tagsString?.componentsSeparatedByString(",")
+        let tags = tagsString?.components(separatedBy: ",")
         photo?.tags = tags
         
         // send delegate a message saying that the content of the destViewController has changed.
@@ -122,21 +122,21 @@ class DetailViewController: UIViewController, UITextFieldDelegate {
         print("back to the main view...")
     }
     
-    @IBAction func buttonDelete(sender: UIBarButtonItem) {
+    @IBAction func buttonDelete(_ sender: UIBarButtonItem) {
         if let title = photo!.title {
-            let alertVC = UIAlertController(title: "Delete \(title)?", message: "Are you sure? It will be permanently lost.", preferredStyle: .ActionSheet)
-            let deleteAction = UIAlertAction(title: "Delete", style: .Destructive) { (action: UIAlertAction) in
+            let alertVC = UIAlertController(title: "Delete \(title)?", message: "Are you sure? It will be permanently lost.", preferredStyle: .actionSheet)
+            let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { (action: UIAlertAction) in
                 print("delete pressed")
                 self.delegate?.deletePhoto(self)
                 
             }
-            let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { (action: UIAlertAction) in
-                self.dismissViewControllerAnimated(true, completion: nil)
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action: UIAlertAction) in
+                self.dismiss(animated: true, completion: nil)
                 print("Cancelling...")
             }
             alertVC.addAction(deleteAction)
             alertVC.addAction(cancelAction)
-            presentViewController(alertVC, animated: true) {
+            present(alertVC, animated: true) {
                 print("Showing AlertVC")
             }
             

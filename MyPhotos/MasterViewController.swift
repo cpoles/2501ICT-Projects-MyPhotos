@@ -13,14 +13,14 @@ class MasterViewController: UICollectionViewController, DetailViewControllerDele
     // MARK: - Properties
     
     var photoCollection = [Photo]()
-    var currentIndexPath = NSIndexPath()
+    var currentIndexPath = IndexPath()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // set the navigation bar background colour as black
-        self.navigationController?.navigationBar.barTintColor = UIColor.blackColor()
-        self.navigationController!.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.orangeColor()]
+        self.navigationController?.navigationBar.barTintColor = UIColor.black
+        self.navigationController!.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.orange]
         
         // Load any saved photos, otherwise, load the sample photoCollection
         
@@ -40,35 +40,35 @@ class MasterViewController: UICollectionViewController, DetailViewControllerDele
     
     // MARK: - Collection View
     
-    override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.photoCollection.count
     }
     
-    override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         // create cell as CollectionViewCell object
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("collectionCell", forIndexPath: indexPath) as! CollectionViewCell
-        if let picture =  photoCollection[indexPath.row].imageData {
-            cell.imageCell.image = UIImage(data: picture)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "collectionCell", for: indexPath) as! CollectionViewCell
+        if let picture =  photoCollection[(indexPath as NSIndexPath).row].imageData {
+            cell.imageCell.image = UIImage(data: picture as Data)
         }
         return cell
     }
     
     // MARK: - Segues
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showFullPhoto" {
-            let destinationViewController = segue.destinationViewController as! FullPhotoViewController
-            let indexPaths = self.collectionView?.indexPathsForSelectedItems()
-            let indexPath = indexPaths![0] as NSIndexPath
+            let destinationViewController = segue.destination as! FullPhotoViewController
+            let indexPaths = self.collectionView?.indexPathsForSelectedItems
+            let indexPath = indexPaths![0] as IndexPath
             currentIndexPath = indexPath
-            destinationViewController.detailItem = photoCollection[indexPath.row]
+            destinationViewController.detailItem = photoCollection[(indexPath as NSIndexPath).row]
             destinationViewController.delegate = self
             print("Show Detail")
         } else if segue.identifier == "addPhoto" {
             let photo = Photo(url: "")
             photo.imageData = nil
             photoCollection.append(photo)
-            let controller = segue.destinationViewController as! DetailViewController
+            let controller = segue.destination as! DetailViewController
             controller.detailItem = photo
             controller.delegate = self
             print("Add new contact")
@@ -88,16 +88,16 @@ class MasterViewController: UICollectionViewController, DetailViewControllerDele
      
      */
     
-    func loadPhotoInBackground(photo: Photo) {
-        let queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0)
+    func loadPhotoInBackground(_ photo: Photo) {
+        let queue = DispatchQueue.global(priority: DispatchQueue.GlobalQueuePriority.low)
         
         // closure to be run in the background on the secondary queue
         let backgroundDownload = {
-            if let data = NSData(contentsOfURL: NSURL(string: photo.url)!) {
+            if let data = try? Data(contentsOf: URL(string: photo.url)!) {
                 // the UIView objects MUST run in the main thread. 
-                let mainQueue = dispatch_get_main_queue()
+                let mainQueue = DispatchQueue.main
                 // dispatch items assincronously.
-                dispatch_async(mainQueue) {
+                mainQueue.async {
                     photo.imageData = data
                     self.collectionView?.reloadData()
                 }
@@ -106,22 +106,22 @@ class MasterViewController: UICollectionViewController, DetailViewControllerDele
             }
         }
         
-        dispatch_async(queue, backgroundDownload)
+        queue.async(execute: backgroundDownload)
     }
     
     func loadPhotoCollection() -> [Photo]? {
         
         var photoLoaded = [Photo]()
         // build the photo collection for the jsonFile
-        let path = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true).first! as NSString
+        let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first! as NSString
         // creating path and looking for file.
         
-        let jsonFile = path.stringByAppendingPathComponent("photoCollection.json") as String?
+        let jsonFile = path.appendingPathComponent("photoCollection.json") as String?
         
         if let file = jsonFile {
             
             // create NSData object
-            let jsonData = NSData(contentsOfFile: file)
+            let jsonData = try? Data(contentsOf: URL(fileURLWithPath: file))
             
             // create the array of dictionaries out of the jsonData NSData object
             
@@ -129,7 +129,7 @@ class MasterViewController: UICollectionViewController, DetailViewControllerDele
             
             if let data = jsonData {
                 
-                try! jsonArrayDic = NSJSONSerialization.JSONObjectWithData(data, options: []) as! [NSDictionary]
+                try! jsonArrayDic = JSONSerialization.jsonObject(with: data, options: []) as! [NSDictionary]
                 // create the array of Photo objects parsing a trailing closure to the map function of the jsonArrayDic
                 // The closure will build a Photo object for each dictionary inside the jsonArrayDic
                 
@@ -144,23 +144,23 @@ class MasterViewController: UICollectionViewController, DetailViewControllerDele
 
         // create path from Directory for the class for the converted class into a property list to be saved.
         
-        let path = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true).first! as NSString
+        let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first! as NSString
         
         // convert array into NSDictionary format
         
         let arrayPhotoDic = photoCollection.map { $0.propertyListRepresentation() }
         
         // create NSData object to write data to file
-        let data: NSData
-        try! data = NSJSONSerialization.dataWithJSONObject(arrayPhotoDic, options: .PrettyPrinted)
+        let data: Data
+        try! data = JSONSerialization.data(withJSONObject: arrayPhotoDic, options: .prettyPrinted)
         
         // create json file
         
-        let jsonFile = path.stringByAppendingPathComponent("photoCollection.json")
+        let jsonFile = path.appendingPathComponent("photoCollection.json")
         
         //write data to file
         
-       data.writeToFile(jsonFile, atomically: true)
+       try? data.write(to: URL(fileURLWithPath: jsonFile), options: [.atomic])
     }
     
     // MARK: - Delegation
@@ -176,7 +176,7 @@ class MasterViewController: UICollectionViewController, DetailViewControllerDele
  
     */
     
-    func destinationViewControllerContentChanged(destinationViewController: DetailViewController) {
+    func destinationViewControllerContentChanged(_ destinationViewController: DetailViewController) {
         if let photo = destinationViewController.detailItem {
             print("Got \(photo)")
              
@@ -184,7 +184,7 @@ class MasterViewController: UICollectionViewController, DetailViewControllerDele
             savePhotoCollection()
             loadPhotoCollection()
             
-            dismissViewControllerAnimated(true, completion: nil)
+            dismiss(animated: true, completion: nil)
             // reload the new picture in the background
             loadPhotoInBackground(photo as! Photo)
         }
@@ -201,15 +201,15 @@ class MasterViewController: UICollectionViewController, DetailViewControllerDele
      
      */
     
-    func deletePhoto(destinationViewController: DetailViewController) {
+    func deletePhoto(_ destinationViewController: DetailViewController) {
         
         if let photo = destinationViewController.detailItem {
             
-            let index = photoCollection.indexOf({ $0 == photo as! Photo  })
+            let index = photoCollection.index(where: { $0 == photo as! Photo  })
             
-            photoCollection.removeAtIndex(index!)
+            photoCollection.remove(at: index!)
             
-            dismissViewControllerAnimated(true, completion: nil)
+            dismiss(animated: true, completion: nil)
             print("item deleted.")
         
         }
@@ -220,24 +220,24 @@ class MasterViewController: UICollectionViewController, DetailViewControllerDele
     
     // MARK: - FullPhotoViewControllerDelegate
     
-    func nextItemFor(viewController: FullPhotoViewController) {
+    func nextItemFor(_ viewController: FullPhotoViewController) {
         
-        let row = currentIndexPath.row
+        let row = (currentIndexPath as NSIndexPath).row
         let nextRow: Int
         if row == photoCollection.count - 1 { nextRow = 0 }
         else { nextRow = row + 1 }
-        let indexPath = NSIndexPath(forRow: nextRow, inSection: currentIndexPath.section)
+        let indexPath = IndexPath(row: nextRow, section: (currentIndexPath as NSIndexPath).section)
         currentIndexPath = indexPath
         viewController.detailItem = photoCollection[nextRow]
         
     }
     
-    func previousItemFor(viewController: FullPhotoViewController) {
-        let row = currentIndexPath.row
+    func previousItemFor(_ viewController: FullPhotoViewController) {
+        let row = (currentIndexPath as NSIndexPath).row
         let previousRow: Int
         if row == 0 { previousRow = photoCollection.count - 1 }
         else { previousRow = row - 1 }
-        let indexPath = NSIndexPath(forRow: previousRow, inSection: currentIndexPath.section)
+        let indexPath = IndexPath(row: previousRow, section: (currentIndexPath as NSIndexPath).section)
         currentIndexPath = indexPath
         viewController.detailItem = photoCollection[previousRow]
     }
