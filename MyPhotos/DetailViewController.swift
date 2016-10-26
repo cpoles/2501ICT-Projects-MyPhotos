@@ -97,7 +97,7 @@ class DetailViewController: UIViewController, UITextFieldDelegate {
             } 
             
         }
-        print("View Refreshed")
+        print("View Refreshed");
     }
     
     // MARK: - Actions
